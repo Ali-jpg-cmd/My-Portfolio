@@ -1,0 +1,13 @@
+/*
+Theme Name: Qasim Ali Portfolio
+Description: Custom WordPress theme for Qasim Ali's portfolio website
+Version: 1.0
+Author: Qasim Ali
+*/
+
+/* Theme styles are handled by React frontend */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
