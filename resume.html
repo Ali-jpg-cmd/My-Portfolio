@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qasim Ali - Resume</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1, h2, h3, h4 {
+            color: #2c3e50;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .contact-info {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .contact-info p {
+            margin: 5px 0;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            border-bottom: 2px solid #84cc16;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .job, .education {
+            margin-bottom: 20px;
+        }
+        
+        .job-title, .degree {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .job-details, .education-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .company, .institution {
+            font-style: italic;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        
+        .skill-category {
+            margin-bottom: 15px;
+        }
+        
+        .skill-category h4 {
+            margin-bottom: 8px;
+        }
+        
+        .skill-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        
+        .skill-list li {
+            margin-bottom: 5px;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .skill-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #84cc16;
+        }
+        
+        .achievements {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .achievements li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .achievements li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #84cc16;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+                font-size: 12px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .section-title {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Qasim Ali</h1>
+        <div class="contact-info">
+            <p>Lahore, Pakistan | 03258639241 | qasimali20041004@gmail.com</p>
+            <p>GitHub: github.com/qasimali | LinkedIn: linkedin.com/in/qasimali</p>
+        </div>
+    </header>
+    
+    <div class="section">
+        <h2 class="section-title">Professional Summary</h2>
+        <p>Creative and detail-oriented Front-End Developer with strong proficiency in building responsive, user-friendly web applications. Experienced in modern JavaScript frameworks and UI/UX design principles. Passionate about creating clean, efficient code and delivering exceptional user experiences.</p>
+    </div>
+    
+    <div class="section">
+        <h2 class="section-title">Experience</h2>
+        
+        <div class="job">
+            <h3 class="job-title">Front-End Developer (Freelance)</h3>
+            <div class="job-details">
+                <span class="company">Various Clients</span>
+                <span class="period">2022 - Present</span>
+            </div>
+            <ul class="achievements">
+                <li>Improved user satisfaction by 30% through optimized UI/UX design</li>
+                <li>Implemented modern CSS frameworks like Tailwind CSS to create visually appealing, mobile-first, user-friendly web applications</li>
+                <li>Collaborated with clients to translate requirements into functional web solutions, ensuring timely delivery within project deadlines</li>
+                <li>Integrated UI/UX design to connect front-end interfaces with back-end services, enhancing application functionality</li>
+            </ul>
+        </div>
+        
+        <div class="job">
+            <h3 class="job-title">Technical Instructor (Individual Tutoring)</h3>
+            <div class="job-details">
+                <span class="company">Self-employed</span>
+                <span class="period">2020 - Present</span>
+            </div>
+            <ul class="achievements">
+                <li>Delivered personalized instruction on front-end and introductory back-end concepts</li>
+                <li>Developed customized lesson plans to teach technical concepts, resulting in improved student proficiency in coding</li>
+                <li>Created mock interviews and coding assessments to prepare students for technical roles</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2 class="section-title">Education</h2>
+        
+        <div class="education">
+            <h3 class="degree">Bachelor's Degree in Computer Science</h3>
+            <div class="education-details">
+                <span class="institution">NUML University, Lahore</span>
+                <span class="period">2020 - 2024</span>
+            </div>
+            <p><strong>Relevant Coursework:</strong> Web Development, Database Systems, Software Engineering, UI/UX Design</p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2 class="section-title">Skills</h2>
+        
+        <div class="skills-container">
+            <div class="skill-category">
+                <h4>Languages</h4>
+                <ul class="skill-list">
+                    <li>HTML5/CSS3</li>
+                    <li>JavaScript (ES6+)</li>
+                    <li>TypeScript</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h4>Frameworks & Libraries</h4>
+                <ul class="skill-list">
+                    <li>React</li>
+                    <li>Vue.js</li>
+                    <li>Node.js/Express</li>
+                    <li>Tailwind CSS</li>
+                    <li>Bootstrap</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h4>Tools & Technologies</h4>
+                <ul class="skill-list">
+                    <li>Git/GitHub</li>
+                    <li>VS Code</li>
+                    <li>Webpack/Vite</li>
+                    <li>MongoDB</li>
+                    <li>REST APIs</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2 class="section-title">Projects</h2>
+        
+        <div class="job">
+            <h3 class="job-title">Personal Portfolio Website</h3>
+            <p>Designed and developed a responsive personal portfolio website using HTML, CSS, and JavaScript. Implemented modern design principles and optimized for performance across all devices.</p>
+        </div>
+        
+        <div class="job">
+            <h3 class="job-title">E-commerce Platform</h3>
+            <p>Built a full-stack e-commerce application using React, Node.js, and MongoDB. Implemented features such as product listings, shopping cart, user authentication, and payment processing.</p>
+        </div>
+    </div>
+</body>
+</html>
