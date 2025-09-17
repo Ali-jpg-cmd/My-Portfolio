@@ -1,0 +1,3007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qasim Ali - Portfolio</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/svgs/solid/code.svg">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Dark Theme (Default) */
+            --bg-color: #0a0a0f;
+            --text-color: #e2e8f0;
+            --accent-color: #00d4ff;
+            --accent-color-rgb: 0, 212, 255;
+            --accent-secondary: #ff00ff;
+            --accent-secondary-rgb: 255, 0, 255;
+            --accent-tertiary: #00ffff;
+            --accent-tertiary-rgb: 0, 255, 255;
+            --transition-speed: 0.3s;
+            --secondary-color: #1a1a2e;
+            --muted-color: #94a3b8;
+            --border-color: #334155;
+            --card-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            --header-height: 70px;
+            --neon-glow: 0 0 20px rgba(0, 212, 255, 0.5);
+            --pink-glow: 0 0 20px rgba(255, 0, 128, 0.5);
+            --purple-glow: 0 0 20px rgba(121, 40, 202, 0.5);
+        }
+        
+        /* Light Theme Variables - Complete Redesign */
+        [data-theme="light"] {
+            --bg-color: #fefefe;
+            --text-color: #0f0f23;
+            --accent-color: #ff6b35;
+            --accent-color-rgb: 255, 107, 53;
+            --accent-secondary: #4ecdc4;
+            --accent-secondary-rgb: 78, 205, 196;
+            --accent-tertiary: #45b7d1;
+            --accent-tertiary-rgb: 69, 183, 209;
+            --secondary-color: #f7f9fc;
+            --muted-color: #64748b;
+            --border-color: #e2e8f0;
+            --card-bg: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            --neon-glow: 0 0 30px rgba(255, 107, 53, 0.3);
+            --pink-glow: 0 0 30px rgba(78, 205, 196, 0.3);
+            --purple-glow: 0 0 30px rgba(69, 183, 209, 0.3);
+        }
+        
+        /* Light Theme Body and Background - Modern Design */
+        [data-theme="light"] body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fefefe 0%, #f0f4f8 25%, #e8f4f8 50%, #f0f4f8 75%, #fefefe 100%);
+            color: var(--text-color);
+            font-weight: 400;
+            letter-spacing: -0.025em;
+        }
+        
+        [data-theme="light"] body::before {
+            background: 
+                radial-gradient(circle at var(--mouse-x, 20%) var(--mouse-y, 80%), rgba(255, 107, 53, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at calc(100% - var(--mouse-x, 20%)) calc(100% - var(--mouse-y, 20%)), rgba(78, 205, 196, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at calc(var(--mouse-x, 40%) + 20%) calc(var(--mouse-y, 40%) - 20%), rgba(69, 183, 209, 0.05) 0%, transparent 50%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--bg-color) 0%, var(--secondary-color) 50%, var(--bg-color) 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at var(--mouse-x, 20%) var(--mouse-y, 80%), rgba(var(--accent-color-rgb, 0, 212, 255), 0.2) 0%, transparent 50%),
+                radial-gradient(circle at calc(100% - var(--mouse-x, 20%)) calc(100% - var(--mouse-y, 20%)), rgba(var(--accent-secondary-rgb, 255, 0, 128), 0.2) 0%, transparent 50%),
+                radial-gradient(circle at calc(var(--mouse-x, 40%) + 20%) calc(var(--mouse-y, 40%) - 20%), rgba(var(--accent-tertiary-rgb, 0, 255, 255), 0.15) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+            transition: background 0.5s ease, transform 0.1s ease;
+            will-change: background, transform;
+        }
+        
+        @keyframes backgroundPulse {
+            0% {
+                background: 
+                    radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(255, 0, 128, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 40% 40%, rgba(121, 40, 202, 0.1) 0%, transparent 50%);
+            }
+            50% {
+                background: 
+                    radial-gradient(circle at 30% 70%, rgba(0, 212, 255, 0.2) 0%, transparent 60%),
+                    radial-gradient(circle at 70% 30%, rgba(255, 0, 128, 0.2) 0%, transparent 60%),
+                    radial-gradient(circle at 50% 50%, rgba(121, 40, 202, 0.15) 0%, transparent 60%);
+            }
+            100% {
+                background: 
+                    radial-gradient(circle at 40% 60%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 60% 40%, rgba(255, 0, 128, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 45% 45%, rgba(121, 40, 202, 0.1) 0%, transparent 50%);
+            }
+        }
+        
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            opacity: 0.8;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.1);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            height: var(--header-height);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Light mode header styling - Modern Glass */
+        [data-theme="light"] header {
+            background: rgba(254, 254, 254, 0.92);
+            border: none;
+            border-bottom: 3px solid transparent;
+            border-image: linear-gradient(90deg, var(--accent-color), var(--accent-secondary), var(--accent-tertiary)) 1;
+            box-shadow: 0 8px 32px rgba(15, 15, 35, 0.08), 0 2px 16px rgba(255, 107, 53, 0.12);
+            backdrop-filter: blur(24px) saturate(120%);
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary), var(--accent-tertiary), var(--accent-secondary), var(--accent-color));
+            background-size: 200% 100%;
+            animation: gradientBorder 3s linear infinite;
+            box-shadow: var(--neon-glow);
+        }
+        
+        @keyframes gradientBorder {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-shadow: var(--neon-glow);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            border-radius: 5px;
+            filter: blur(15px);
+            opacity: 0.3;
+            background-color: var(--accent-color);
+            z-index: -1;
+            animation: pulseLogo 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes pulseLogo {
+            0% { opacity: 0.2; transform: scale(0.95); }
+            100% { opacity: 0.4; transform: scale(1.05); }
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+        }
+        
+        #theme-toggle-btn {
+            background: none;
+            border: none;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #theme-toggle-btn:hover {
+            transform: rotate(30deg);
+            box-shadow: var(--neon-glow);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--header-height);
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 60%;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: var(--muted-color);
+        }
+        
+        .hero-cta {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+            color: var(--bg-color);
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            box-shadow: var(--neon-glow);
+        }
+        
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s ease;
+            z-index: -1;
+        }
+        
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), var(--neon-glow);
+        }
+        
+        .hero-cta:hover::before {
+            left: 100%;
+        }
+        
+        .hero-info {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .info-item {
+            margin-right: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .info-item i {
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--accent-color), var(--accent-secondary), var(--accent-tertiary), var(--accent-secondary), var(--accent-color));
+            background-size: 400% 400%;
+            z-index: -1;
+            border-radius: 12px;
+            animation: glowingBorder 10s ease infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        @keyframes glowingBorder {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: transparent;
+        }
+        
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+        
+        .skill-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+            text-shadow: var(--neon-glow);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .skill-meters {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+        
+        .skill-meter {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+        
+        .skill-meter-label {
+            width: 130px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+        
+        .skill-meter-bar {
+            flex: 1;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        /* Light mode skill meter bar styling */
+        [data-theme="light"] .skill-meter-bar {
+            background-color: rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Enhanced light mode skill card styling - Neumorphic Design */
+        [data-theme="light"] .skill-card {
+            background: linear-gradient(145deg, #ffffff, #f0f4f8);
+            border: none;
+            border-radius: 20px;
+            box-shadow: 
+                20px 20px 40px rgba(15, 15, 35, 0.08),
+                -20px -20px 40px rgba(255, 255, 255, 0.9),
+                inset 0 0 0 1px rgba(255, 107, 53, 0.1);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        [data-theme="light"] .skill-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 
+                25px 25px 50px rgba(15, 15, 35, 0.12),
+                -25px -25px 50px rgba(255, 255, 255, 1),
+                inset 0 0 0 2px rgba(255, 107, 53, 0.3),
+                0 0 40px rgba(255, 107, 53, 0.15);
+        }
+        
+        [data-theme="light"] .skill-title {
+            font-family: 'Poppins', sans-serif;
+            color: transparent;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary), var(--accent-tertiary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: -0.02em;
+            text-shadow: none;
+        }
+        
+        [data-theme="light"] .skill-meter-fill {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary)) !important;
+            box-shadow: 
+                0 0 20px rgba(255, 107, 53, 0.4),
+                inset 0 2px 4px rgba(255, 255, 255, 0.3) !important;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        [data-theme="light"] .skill-meter-bar {
+            background: linear-gradient(145deg, #f0f4f8, #e2e8f0);
+            border: none;
+            border-radius: 12px;
+            box-shadow: 
+                inset 5px 5px 10px rgba(15, 15, 35, 0.1),
+                inset -5px -5px 10px rgba(255, 255, 255, 0.8);
+        }
+        
+        [data-theme="light"] .skill-meter-percentage {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+        }
+        
+        [data-theme="light"] .skill-meter-label {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: -0.01em;
+        }
+        
+        .skill-meter-fill {
+            height: 100%;
+            background-color: var(--accent-color);
+            border-radius: 5px;
+            transition: width 1.5s ease-in-out;
+            box-shadow: var(--neon-glow);
+            animation: pulseMeter 2s infinite alternate;
+        }
+        
+        @keyframes pulseMeter {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        
+        .skill-meter-percentage {
+            width: 40px;
+            font-size: 0.8rem;
+            text-align: right;
+            color: var(--accent-color);
+        }
+        
+        @keyframes pulseBullet {
+            0% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        /* Technical Instructor Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            perspective: 1500px; /* Enhanced 3D perspective effect */
+            transform-style: preserve-3d;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            background: linear-gradient(to bottom, var(--accent-color), var(--accent-secondary), #00c8ff, #8a2be2, var(--accent-tertiary));
+            top: 0;
+            bottom: 0;
+            left: 0;
+            margin-left: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 35px rgba(var(--accent-color-rgb), 0.9), 0 0 25px #00c8ff90, 0 0 15px #8a2be280;
+            animation: pulseTimeline 4s infinite alternate;
+            transform: translateZ(20px); /* Enhanced 3D effect */
+        }
+        
+        @keyframes pulseTimeline {
+            0% { opacity: 0.8; box-shadow: 0 0 20px rgba(var(--accent-color-rgb), 0.7), 0 0 15px #00c8ff70, 0 0 10px #8a2be270; }
+            50% { opacity: 0.9; box-shadow: 0 0 30px rgba(var(--accent-color-rgb), 0.8), 0 0 20px #00c8ff80, 0 0 15px #8a2be280; }
+            100% { opacity: 1; box-shadow: 0 0 40px rgba(var(--accent-color-rgb), 1), 0 0 30px #00c8ffa0, 0 0 20px #8a2be290; }
+        }
+        
+        .timeline-item {
+            padding: 50px 50px 50px 80px;
+            position: relative;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(22, 33, 62, 0.9) 100%);
+            border-radius: 25px;
+            border: 2px solid rgba(var(--accent-color-rgb), 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 5px 15px rgba(var(--accent-color-rgb), 0.1);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            transform: translateZ(0px) rotateX(0deg) rotateY(0deg);
+            transform-style: preserve-3d;
+            overflow: hidden;
+        }
+        
+        /* Light mode timeline item styling */
+        [data-theme="light"] .timeline-item {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
+            border: 2px solid rgba(99, 102, 241, 0.2);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.1), 0 8px 32px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(20px);
+        }
+        
+        .timeline-item:hover {
+            transform: translateY(-20px) scale(1.02) rotateX(3deg) rotateY(1deg);
+            border-color: var(--accent-color);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 
+                      0 0 40px rgba(var(--accent-color-rgb), 0.7),
+                      0 0 30px rgba(0, 200, 255, 0.6),
+                      0 0 20px rgba(138, 43, 226, 0.5);
+        }
+        
+        /* Light mode hover effect */
+        [data-theme="light"] .timeline-item:hover {
+            transform: translateY(-15px) scale(1.02) rotateX(2deg) rotateY(1deg);
+            border-color: var(--accent-color);
+            box-shadow: 0 30px 60px rgba(99, 102, 241, 0.15), 
+                      0 0 40px rgba(99, 102, 241, 0.25),
+                      0 0 30px rgba(236, 72, 153, 0.15);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), #00c8ff, #8a2be2, var(--accent-tertiary));
+            background-size: 400% 400%;
+            left: -18px;
+            top: 40px;
+            z-index: 1;
+            box-shadow: 0 0 20px rgba(var(--accent-color-rgb), 0.9), 0 0 15px rgba(0, 200, 255, 0.8), inset 0 0 10px rgba(255, 255, 255, 0.5);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: pulseTimelinePoint 3s infinite alternate, gradientMove 8s infinite linear;
+            transform: translateZ(20px); /* 3D effect */
+        }
+        
+        @keyframes pulseTimelinePoint {
+            0% { transform: translateZ(20px) scale(0.9); box-shadow: 0 0 20px rgba(var(--accent-color-rgb), 0.7), 0 0 15px rgba(0, 200, 255, 0.6), 0 0 10px rgba(138, 43, 226, 0.5); }
+            50% { transform: translateZ(25px) scale(1.0); box-shadow: 0 0 25px rgba(var(--accent-color-rgb), 0.8), 0 0 20px rgba(0, 200, 255, 0.7), 0 0 15px rgba(138, 43, 226, 0.6); }
+            100% { transform: translateZ(30px) scale(1.1); box-shadow: 0 0 35px rgba(var(--accent-color-rgb), 1), 0 0 30px rgba(0, 200, 255, 0.9), 0 0 20px rgba(138, 43, 226, 0.8); }
+        }
+        
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 50% 100%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 50% 0%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .timeline-item:hover::before {
+            transform: translateZ(40px) scale(1.5);
+            box-shadow: 0 0 45px rgba(var(--accent-color-rgb), 1), 0 0 35px rgba(0, 200, 255, 1), 0 0 25px rgba(138, 43, 226, 0.9);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            pointer-events: none;
+            opacity: 0.5;
+        }
+        
+        .timeline-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, var(--text-color), var(--accent-color), #00c8ff, #8a2be2, var(--accent-secondary));
+            background-size: 400% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            animation: textGradient 8s linear infinite;
+            transform: translateZ(10px); /* Enhanced 3D effect */
+            text-shadow: 0 5px 20px rgba(0, 200, 255, 0.6), 0 3px 10px rgba(138, 43, 226, 0.5);
+            position: relative;
+        }
+        
+        @keyframes textGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .timeline-subtitle {
+            font-size: 1.35rem;
+            color: var(--muted-color);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            transform: translateZ(3px); /* 3D effect */
+        }
+        
+        .timeline-location {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateZ(2px); /* 3D effect */
+        }
+        
+        .timeline-location i {
+            color: var(--accent-secondary);
+            font-size: 1rem;
+            text-shadow: 0 0 10px rgba(var(--accent-secondary-rgb), 0.7);
+        }
+        
+        .timeline-period {
+            background: linear-gradient(90deg, rgba(var(--accent-color-rgb), 0.2), rgba(var(--accent-secondary-rgb), 0.2), rgba(var(--accent-tertiary-rgb), 0.2));
+            color: var(--accent-color);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 1px solid rgba(var(--accent-color-rgb), 0.3);
+            box-shadow: 0 4px 15px rgba(var(--accent-color-rgb), 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-period:hover {
+            box-shadow: 0 6px 20px rgba(var(--accent-color-rgb), 0.25), inset 0 1px 3px rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .timeline-achievements {
+            list-style: none;
+            margin-top: 25px;
+        }
+        
+        .timeline-achievements li {
+            margin-bottom: 18px;
+            position: relative;
+            padding-left: 30px;
+            line-height: 1.7;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+        }
+        
+        .timeline-achievements li:hover {
+            transform: translateX(8px);
+            color: var(--accent-color);
+        }
+        
+        .timeline-achievements li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-secondary);
+            font-size: 1.3rem;
+            animation: pulseBullet 2s infinite alternate;
+            text-shadow: 0 0 8px rgba(var(--accent-secondary-rgb), 0.6);
+        }
+        
+        /* Education Section */
+        .education-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .education-item {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .education-item:hover {
+            border-color: var(--accent-color);
+        }
+        
+        .education-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .education-subtitle {
+            font-size: 1rem;
+            color: var(--muted-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .education-period {
+            background-color: rgba(132, 204, 22, 0.1);
+            color: var(--accent-color);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .coursework-title {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+        
+        .coursework-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .coursework-item {
+            background-color: var(--secondary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 212, 255, 0.1);
+            border-color: var(--accent-color);
+        }
+        
+        .project-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(10, 10, 15, 0.8) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover .project-image::before {
+            opacity: 1;
+        }
+        
+        .project-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            transition: color 0.3s ease;
+        }
+        
+        .project-card:hover .project-title {
+            color: var(--accent-color);
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .tech-tag {
+            background-color: rgba(0, 212, 255, 0.1);
+            color: var(--accent-color);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover .tech-tag {
+            background-color: rgba(0, 212, 255, 0.2);
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+        
+        .project-description {
+            font-size: 0.95rem;
+            color: var(--muted-color);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .project-link {
+            color: var(--accent-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-bottom: 3px;
+        }
+        
+        .project-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .project-link:hover::after {
+            width: 100%;
+        }
+        
+        .project-link i {
+            margin-right: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-link:hover i {
+            transform: translateY(-3px);
+        }
+        
+        /* Certifications Section */
+        .certifications-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .certification-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .certification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 212, 255, 0.1);
+            border-color: var(--accent-color);
+        }
+        
+        .certification-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+            text-shadow: var(--neon-glow);
+            animation: pulse 2s infinite alternate;
+        }
+        
+        .certification-content {
+            flex-grow: 1;
+        }
+        
+        .certification-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            transition: color 0.3s ease;
+        }
+        
+        .certification-card:hover .certification-title {
+            color: var(--accent-color);
+        }
+        
+        .certification-issuer {
+            font-size: 0.9rem;
+            color: var(--muted-color);
+            margin-bottom: 5px;
+        }
+        
+        .certification-date {
+            font-size: 0.85rem;
+            color: var(--muted-color);
+            margin-bottom: 15px;
+        }
+        
+        .certification-link {
+            color: var(--accent-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            padding-bottom: 3px;
+        }
+        
+        .certification-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .certification-link:hover::after {
+            width: 100%;
+        }
+        
+        .certification-link i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .certification-link:hover i {
+            transform: translateX(3px);
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .contact-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-description {
+            margin-bottom: 30px;
+            color: var(--muted-color);
+        }
+        
+        .contact-links {
+            list-style: none;
+        }
+        
+        .contact-links li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-links i {
+            width: 30px;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+        
+        .contact-info-additional {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.9) 100%);
+            border-radius: 20px;
+            padding: 45px;
+            border: 2px solid rgba(var(--accent-color-rgb), 0.3);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 5px 15px rgba(var(--accent-color-rgb), 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transform: translateZ(0);
+        }
+        
+        /* Light mode styling for contact info additional */
+        [data-theme="light"] .contact-info-additional {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
+            border: 2px solid rgba(99, 102, 241, 0.25);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.12), 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Light mode education and certification cards */
+        [data-theme="light"] .education-item,
+        [data-theme="light"] .certification-card,
+        [data-theme="light"] .project-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            border: 2px solid rgba(99, 102, 241, 0.15);
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.1), 0 4px 16px rgba(0, 0, 0, 0.05);
+        }
+        
+        [data-theme="light"] .education-item:hover,
+        [data-theme="light"] .certification-card:hover,
+        [data-theme="light"] .project-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15), 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        [data-theme="light"] .education-title,
+        [data-theme="light"] .certification-title,
+        [data-theme="light"] .project-title {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        [data-theme="light"] .coursework-item {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            color: var(--accent-color);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        [data-theme="light"] .tech-tag {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(139, 92, 246, 0.1));
+            color: var(--accent-secondary);
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        [data-theme="light"] .education-period {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(99, 102, 241, 0.15));
+            color: var(--accent-tertiary);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            font-weight: 600;
+        }
+        
+        /* Enhanced hover effects for light mode tags */
+        [data-theme="light"] .coursework-item:hover {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-tertiary));
+            border: 1px solid var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(var(--accent-color-rgb), 0.3);
+        }
+        
+        [data-theme="light"] .tech-tag:hover {
+            background: linear-gradient(135deg, var(--accent-secondary), var(--accent-tertiary));
+            border: 1px solid var(--accent-secondary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(var(--accent-secondary-rgb), 0.3);
+        }
+        
+        [data-theme="light"] .education-period:hover {
+            background: linear-gradient(135deg, var(--accent-tertiary), var(--accent-color));
+            border: 1px solid var(--accent-tertiary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(var(--accent-tertiary-rgb), 0.3);
+        }
+        
+        /* Enhanced skill meter animations in light mode */
+        [data-theme="light"] .skill-card:hover .skill-meter-fill {
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary), var(--accent-tertiary)) !important;
+            box-shadow: 0 0 20px rgba(var(--accent-color-rgb), 0.5) !important;
+            animation: skillPulse 1.5s infinite alternate !important;
+        }
+        
+        @keyframes skillPulse {
+            0% { opacity: 0.8; transform: scaleY(1); }
+            100% { opacity: 1; transform: scaleY(1.1); }
+        }
+        
+        [data-theme="light"] .certification-icon {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
+        
+        /* Light mode section styling */
+        [data-theme="light"] .section-title {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary), var(--accent-tertiary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+        
+        [data-theme="light"] .section-title::after {
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary), var(--accent-tertiary));
+            height: 4px;
+            box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.4);
+        }
+        
+        .contact-info-additional:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+        
+        .contact-info-additional::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--accent-color), var(--accent-secondary), var(--accent-tertiary), var(--accent-secondary), var(--accent-color));
+            background-size: 400% 400%;
+            z-index: -1;
+            border-radius: 12px;
+            animation: glowingBorder 10s ease infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .contact-info-additional:hover::before {
+            opacity: 1;
+        }
+        
+        .chat-prompt {
+            margin-top: 35px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.15) 0%, rgba(var(--accent-secondary-rgb), 0.1) 100%);
+            border: 2px solid rgba(var(--accent-color-rgb), 0.3);
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: pulseChat 4s infinite ease-in-out;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transform: translateZ(0);
+        }
+        
+        /* Light mode styling for chat prompt */
+        [data-theme="light"] .chat-prompt {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.08) 100%);
+            border: 2px solid rgba(99, 102, 241, 0.25);
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15);
+        }
+        
+        [data-theme="light"] .chat-prompt:hover {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(236, 72, 153, 0.12) 100%);
+            border: 2px solid rgba(99, 102, 241, 0.4);
+            box-shadow: 0 12px 40px rgba(99, 102, 241, 0.25);
+        }
+        
+        @keyframes pulseChat {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(var(--accent-color-rgb), 0.4); }
+            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(var(--accent-color-rgb), 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(var(--accent-color-rgb), 0); }
+        }
+        
+        .chat-prompt i {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-right: 15px;
+            animation: robotPulse 2s infinite alternate ease-in-out;
+        }
+        
+        @keyframes robotPulse {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-5px) rotate(5deg); }
+        }
+        
+        .chat-prompt p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+        
+        .chat-prompt:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(var(--accent-color-rgb), 0.3);
+            cursor: pointer;
+        }
+        
+        /* Removed submit button styles as the contact form has been replaced with chatbot */
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        /* Light mode footer */
+        [data-theme="light"] footer {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-top: 2px solid rgba(99, 102, 241, 0.2);
+            box-shadow: 0 -4px 20px rgba(99, 102, 241, 0.1);
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .social-links li {
+            margin: 0 15px;
+        }
+        
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            color: var(--muted-color);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+    @media (max-width: 768px) {
+        .skill-meter {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+        }
+        
+        .skill-meter-label {
+            width: 100%;
+        }
+        
+        .skill-meter-percentage {
+            align-self: flex-end;
+            margin-top: -20px;
+        }
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                margin-bottom: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--secondary-color);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                z-index: 999;
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects-container,
+            .certifications-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .timeline-subtitle,
+            .education-subtitle {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .timeline-period,
+            .education-period {
+                margin-top: 5px;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+        
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            background-color: rgba(0, 212, 255, 0.1);
+            color: var(--accent-color);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid var(--accent-color);
+            box-shadow: var(--neon-glow);
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+        
+        .success-message i {
+            margin-right: 8px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .error-message {
+            background-color: rgba(255, 0, 128, 0.1);
+            color: var(--accent-secondary);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid var(--accent-secondary);
+            box-shadow: var(--pink-glow);
+            transition: opacity 0.3s ease;
+        }
+        
+        .error-message i {
+            margin-right: 8px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Qasim Ali</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li class="theme-toggle">
+                    <button id="theme-toggle-btn" aria-label="Toggle dark/light theme">
+                        <i class="fas fa-moon" id="theme-icon"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="container">
+            <div class="hero-3d-container" id="hero3DContainer"></div>
+            <div class="hero-content fade-in">
+                <h1 class="hero-title">Hi, I'm <span style="color: var(--accent-color);">Qasim Ali</span></h1>
+                <h2 class="hero-subtitle">AI and Full Stack Developer</h2>
+                <p class="hero-description">Passionate AI specialist and innovator with 2+ years of experience building cutting-edge solutions. I transform complex problems into elegant, user-friendly applications that drive real business impact. From intelligent chatbots to automated workflows, I create technology that matters.</p>
+                <a href="#contact" class="hero-cta">Get In Touch</a>
+                
+                <div class="hero-info">
+                    <div class="info-item fade-in delay-1">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Lahore, Pakistan</span>
+                    </div>
+                    <div class="info-item fade-in delay-2">
+                        <i class="fas fa-phone"></i>
+                        <span>03258639241</span>
+                    </div>
+                    <div class="info-item fade-in delay-3">
+                        <i class="fas fa-envelope"></i>
+                        <span>qasimali20041004@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-container">
+                <div class="skill-card fade-in">
+                    <h3 class="skill-title">Frontend</h3>
+                    <div class="skill-meters">
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">HTML</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 95%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">95%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">CSS3</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 90%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">90%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">JavaScript (ES6+)</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 85%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">85%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">React</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 80%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">80%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Vue.js</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 75%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">75%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-card fade-in delay-1">
+                    <h3 class="skill-title">Backend</h3>
+                    <div class="skill-meters">
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Node.js</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 80%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">80%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Express.js</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 75%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">75%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">REST APIs</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 85%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">85%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">MongoDB</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 70%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">70%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">SQL</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 60%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">60%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-card fade-in delay-2">
+                    <h3 class="skill-title">Tools & Technologies</h3>
+                    <div class="skill-meters">
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Git & GitHub</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 85%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">85%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Webpack/Vite</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 75%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">75%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Responsive Design</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 90%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">90%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">UI/UX Design</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 80%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">80%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Docker</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 50%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">50%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-card fade-in delay-3">
+                    <h3 class="skill-title">Technical Education</h3>
+                    <div class="skill-meters">
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Curriculum Development</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 95%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">95%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Workshop Facilitation</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 90%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">90%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Educational Content</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 85%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">85%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Student Mentoring</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 95%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">95%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Learning Assessment</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 90%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">90%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-card fade-in delay-4">
+                    <h3 class="skill-title">Soft Skills</h3>
+                    <div class="skill-meters">
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Problem Solving</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 90%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">90%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Communication</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 85%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">85%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Teamwork</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 90%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">90%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Adaptability</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 95%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">95%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Leadership</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 80%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">80%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <h3 class="timeline-title">Technical Instructor</h3>
+                    <div class="timeline-subtitle">
+                        <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> Lahore, Pakistan</span>
+                        <span class="timeline-period">2020 - Present</span>
+                    </div>
+                    <ul class="timeline-achievements">
+                        <li>Conducted comprehensive technical training sessions on programming languages, frameworks, and development tools</li>
+                        <li>Designed and implemented hands-on coding exercises and projects to reinforce learning objectives</li>
+                        <li>Provided one-on-one mentoring to students, helping them overcome technical challenges and improve their skills</li>
+                        <li>Created technical documentation and learning resources to support student development</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item fade-in delay-1">
+                    <h3 class="timeline-title">AI and Full Stack Developer</h3>
+                    <div class="timeline-subtitle">
+                        <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> Lahore, Pakistan</span>
+                        <span class="timeline-period">2018 - Present</span>
+                    </div>
+                    <ul class="timeline-achievements">
+                        <li>Improved user satisfaction by 40% through implementation of intelligent AI-powered features</li>
+                        <li>Developed and deployed machine learning models for natural language processing and computer vision applications</li>
+                        <li>Built responsive full-stack web applications using modern frameworks and cloud infrastructure</li>
+                        <li>Reduced inference time by 35% through model optimization techniques and efficient algorithm design</li>
+                        <li>Collaborated with clients to translate requirements into AI-driven solutions, ensuring timely delivery within project deadlines</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item fade-in delay-2">
+                    <h3 class="timeline-title">3D Modeler & Animator</h3>
+                    <div class="timeline-subtitle">
+                        <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> Remote</span>
+                        <span class="timeline-period">2019 - 2022</span>
+                    </div>
+                    <ul class="timeline-achievements">
+                        <li>Created detailed 3D models and animations for various client projects using industry-standard tools</li>
+                        <li>Developed realistic character models, environments, and product visualizations</li>
+                        <li>Implemented efficient rigging systems for character animation and movement</li>
+                        <li>Produced high-quality textures and materials to enhance visual appeal of 3D assets</li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section" id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-container">
+                <div class="education-item fade-in">
+                    <h3 class="education-title">Bachelor's Degree in Computer Science</h3>
+                    <div class="education-subtitle">
+                        <span>NUML University, Lahore</span>
+                        <span class="education-period">2020 - 2024</span>
+                    </div>
+                    <h4 class="coursework-title">Relevant Coursework:</h4>
+                    <div class="coursework-list">
+                        <span class="coursework-item">Web Development</span>
+                        <span class="coursework-item">Database Systems</span>
+                        <span class="coursework-item">Software Engineering</span>
+                        <span class="coursework-item">UI/UX Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects section removed as requested -->
+
+    <!-- Certifications Section -->
+    <section class="section" id="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certifications-container">
+                <div class="certification-card fade-in">
+                    <div class="certification-icon">
+                        <i class="fab fa-hackerrank"></i>
+                    </div>
+                    <div class="certification-content">
+                        <h3 class="certification-title">Java (Basic)</h3>
+                        <p class="certification-issuer">HackerRank</p>
+                        <p class="certification-date">Issued 2024</p>
+                        <a href="https://www.hackerrank.com/certificates/48c584773631" target="_blank" class="certification-link">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="certification-card fade-in delay-1">
+                    <div class="certification-icon">
+                        <i class="fab fa-hackerrank"></i>
+                    </div>
+                    <div class="certification-content">
+                        <h3 class="certification-title">JavaScript (Intermediate)</h3>
+                        <p class="certification-issuer">HackerRank</p>
+                        <p class="certification-date">Issued 2024</p>
+                        <a href="https://www.hackerrank.com/certificates/a161eb5d80b0" target="_blank" class="certification-link">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="certification-card fade-in delay-2">
+                    <div class="certification-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="certification-content">
+                        <h3 class="certification-title">SEMrush Academy Certification</h3>
+                        <p class="certification-issuer">SEMrush</p>
+                        <p class="certification-date">Issued September 2025</p>
+                        <a href="https://static.semrush.com/academy/certificates/d9f8c820b4/qasim-ali_25.pdf" target="_blank" class="certification-link">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3 class="contact-title">Let's Connect</h3>
+                    <p class="contact-description">Feel free to reach out if you're looking for a developer, have a question, or just want to connect.</p>
+                    <ul class="contact-links">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>qasimali20041004@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>03258639241</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Lahore, Pakistan</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-info-additional">
+                    <h3 class="contact-title">Chat with Me</h3>
+                    <p class="contact-description">Use the chat assistant in the bottom right corner to ask questions about my skills, experience, or to get in touch with me.</p>
+                    <div class="chat-prompt">
+                        <i class="fas fa-robot"></i>
+                        <p>My AI assistant is available 24/7 to help you learn more about my work or to help you contact me.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <ul class="social-links">
+                    <li><a href="https://github.com/ali-jpg-cmd" target="_blank"><i class="fab fa-github"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/qasim-ali-347ba7376/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                </ul>
+                <p class="copyright">© 2024 Qasim Ali. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Particle Background Canvas -->
+    <canvas id="particleCanvas"></canvas>
+    
+    <script>
+        // Initialize mouse position CSS variables for interactive gradients
+        document.documentElement.style.setProperty('--mouse-x', '20%');
+        document.documentElement.style.setProperty('--mouse-y', '80%');
+        
+        // Track mouse/touch movement for interactive gradients
+        function updateGradientPosition(x, y) {
+            const mouseXPercent = (x / window.innerWidth * 100).toFixed(2) + '%';
+            const mouseYPercent = (y / window.innerHeight * 100).toFixed(2) + '%';
+            
+            // Update CSS variables for gradient positions
+            document.documentElement.style.setProperty('--mouse-x', mouseXPercent);
+            document.documentElement.style.setProperty('--mouse-y', mouseYPercent);
+        }
+        
+        // Mouse events for gradient interaction
+        document.addEventListener('mousemove', (e) => {
+            updateGradientPosition(e.clientX, e.clientY);
+        });
+        
+        // Touch events for gradient interaction
+        document.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+                updateGradientPosition(e.touches[0].clientX, e.touches[0].clientY);
+            }
+        }, { passive: true });
+        
+        document.addEventListener('touchstart', (e) => {
+            if (e.touches.length > 0) {
+                updateGradientPosition(e.touches[0].clientX, e.touches[0].clientY);
+            }
+        }, { passive: true });
+        
+        // Particle Background
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Set canvas size
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Style canvas
+        canvas.style.position = 'fixed';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+        canvas.style.zIndex = '-2';
+        
+        // Mouse/touch interaction variables
+        let mouseX = null;
+        let mouseY = null;
+        let touchActive = false;
+        const interactionRadius = 150; // Radius of influence around cursor/touch
+        
+        // Particle settings
+        const particleCount = 100;
+        const particles = [];
+        const colors = ['rgba(0, 212, 255, 0.5)', 'rgba(255, 0, 128, 0.5)', 'rgba(121, 40, 202, 0.5)'];
+        
+        // Create particles
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2 + 1,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                speedX: Math.random() * 0.5 - 0.25,
+                speedY: Math.random() * 0.5 - 0.25,
+                opacity: Math.random() * 0.5 + 0.2,
+                baseSpeedX: Math.random() * 0.5 - 0.25, // Store original speed
+                baseSpeedY: Math.random() * 0.5 - 0.25,  // Store original speed
+                size: Math.random() * 2 + 1, // Base size
+                pulseDirection: Math.random() > 0.5 ? 1 : -1, // Direction of size pulsing
+                pulseSpeed: Math.random() * 0.02 + 0.01 // Speed of size pulsing
+            });
+        }
+        
+        // Mouse/touch event listeners
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        
+        document.addEventListener('mouseout', () => {
+            mouseX = null;
+            mouseY = null;
+        });
+        
+        // Touch events for mobile
+        document.addEventListener('touchstart', (e) => {
+            touchActive = true;
+            mouseX = e.touches[0].clientX;
+            mouseY = e.touches[0].clientY;
+        }, { passive: true });
+        
+        document.addEventListener('touchmove', (e) => {
+            mouseX = e.touches[0].clientX;
+            mouseY = e.touches[0].clientY;
+        }, { passive: true });
+        
+        document.addEventListener('touchend', () => {
+            touchActive = false;
+            mouseX = null;
+            mouseY = null;
+        }, { passive: true });
+        
+        // Draw and animate particles
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                // Calculate distance to mouse/touch if active
+                let distToMouse = Infinity;
+                if (mouseX !== null && mouseY !== null) {
+                    const dx = particle.x - mouseX;
+                    const dy = particle.y - mouseY;
+                    distToMouse = Math.sqrt(dx * dx + dy * dy);
+                }
+                
+                // Apply force if within interaction radius
+                if (distToMouse < interactionRadius) {
+                    // Calculate normalized direction vector away from cursor
+                    const dirX = (particle.x - mouseX) / distToMouse;
+                    const dirY = (particle.y - mouseY) / distToMouse;
+                    
+                    // Strength of repulsion (stronger when closer)
+                    const strength = 1 - distToMouse / interactionRadius;
+                    
+                    // Apply force to particle
+                    particle.speedX = particle.baseSpeedX + dirX * strength * 2;
+                    particle.speedY = particle.baseSpeedY + dirY * strength * 2;
+                    
+                    // Increase opacity and size when interacting
+                    particle.opacity = Math.min(0.8, particle.opacity + strength * 0.3);
+                    
+                    // Highlight particles near cursor
+                    particle.highlight = true;
+                } else {
+                    // Gradually return to base speed when not influenced
+                    particle.speedX = particle.speedX * 0.95 + particle.baseSpeedX * 0.05;
+                    particle.speedY = particle.speedY * 0.95 + particle.baseSpeedY * 0.05;
+                    
+                    // Return opacity to normal
+                    particle.opacity = Math.max(particle.opacity * 0.95, Math.random() * 0.3 + 0.2);
+                    particle.highlight = false;
+                }
+                
+                // Pulse size effect
+                particle.size += particle.pulseDirection * particle.pulseSpeed;
+                if (particle.size > particle.radius * 1.5 || particle.size < particle.radius * 0.7) {
+                    particle.pulseDirection *= -1;
+                }
+                
+                // Move particle
+                particle.x += particle.speedX;
+                particle.y += particle.speedY;
+                
+                // Wrap around edges
+                if (particle.x < 0) particle.x = canvas.width;
+                if (particle.x > canvas.width) particle.x = 0;
+                if (particle.y < 0) particle.y = canvas.height;
+                if (particle.y > canvas.height) particle.y = 0;
+                
+                // Draw particle
+                ctx.beginPath();
+                const particleSize = particle.highlight ? particle.size * 1.5 : particle.size;
+                ctx.arc(particle.x, particle.y, particleSize, 0, Math.PI * 2);
+                ctx.fillStyle = particle.color.replace('0.5', particle.opacity);
+                ctx.fill();
+                
+                // Draw connections
+                particles.forEach(otherParticle => {
+                    const dx = particle.x - otherParticle.x;
+                    const dy = particle.y - otherParticle.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        const connectionOpacity = (1 - distance / 100) * (particle.highlight || otherParticle.highlight ? 0.4 : 0.2);
+                        ctx.strokeStyle = particle.color.replace('0.5', connectionOpacity);
+                        ctx.lineWidth = particle.highlight || otherParticle.highlight ? 0.8 : 0.5;
+                        ctx.moveTo(particle.x, particle.y);
+                        ctx.lineTo(otherParticle.x, otherParticle.y);
+                        ctx.stroke();
+                    }
+                });
+            });
+            
+            requestAnimationFrame(drawParticles);
+        }
+        
+        drawParticles();
+        
+        // Theme Toggle Functionality
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        const themeIcon = document.getElementById('theme-icon');
+        
+        // Check for saved theme preference or use default
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        
+        // Update icon based on current theme
+        if (savedTheme === 'light') {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        // Toggle theme on button click
+        themeToggleBtn.addEventListener('click', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Toggle icon
+            if (newTheme === 'light') {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Intersection Observer for fade-in animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            fadeObserver.observe(element);
+        });
+        
+        // Enhanced chatbot for contact functionality
+        // The contact form has been replaced with an AI chatbot that can handle inquiries
+        // Users can interact with the chatbot to get information or request contact
+        
+        // Qasim Ali's Professional Chatbot - Enhanced Version with Personality
+        const qasimData = {
+            name: "Qasim Ali",
+            email: "qasimali20041004@gmail.com",
+            phone: "+92-325-8639241",
+            location: "Lahore, Pakistan",
+            portfolio: "Portfolio available (mention for link)",
+            
+            // Professional Info
+            title: "AI Specialist | Prompt Engineer | AI Automator | Front-End Developer",
+            experience: "2+ years in AI solutions and web development",
+            education: "Bachelors in Computer Science from NUML University (2020-2024)",
+            
+            // Skills
+            skills: {
+                ai: ["Prompt Engineering", "Chatbot Development", "OpenAI API", "LangChain", "RPA", "TensorFlow", "PyTorch"],
+                frontend: ["React", "Vue.js", "Angular", "HTML5", "CSS3", "JavaScript", "Tailwind CSS", "Bootstrap"],
+                backend: ["Node.js", "Express.js", "Django", "Flask", "RESTful APIs", "GraphQL"],
+                databases: ["MongoDB", "MySQL", "PostgreSQL", "SQL Server"],
+                tools: ["Git", "GitHub", "Docker", "Firebase", "AWS", "Azure", "Netlify", "Vercel"],
+                other: ["Technical Writing", "SEO", "Figma", "Adobe XD"]
+            },
+            
+            // Projects
+            projects: {
+                toyShop: {
+                    name: "Ali's Toy Shop - Offline Sales Tracking App",
+                    tech: "Flutter, Hive Database, PDF Generation",
+                    description: "Complete offline inventory and sales management app with modern dark UI, real-time profit calculations, PDF receipts, CSV exports, and backup/restore functionality"
+                },
+                ecommerceChatbot: {
+                    name: "AI-Powered E-Commerce Chatbot",
+                    tech: "OpenAI API, LangChain",
+                    description: "Boosted customer engagement by 35% and reduced support queries by 50%"
+                },
+                automationTool: {
+                    name: "RPA-based Automation System",
+                    tech: "RPA, Process Automation",
+                    description: "Reduced processing time by 40% for logistics client"
+                }
+            },
+            
+            // Personality and interests
+            personality: "professional but chill",
+            hobbies: ["making projects", "playing games", "watching anime", "watching series on Netflix"],
+            workStyle: "I love building things that actually solve problems and make life easier"
+        };
+
+        // Response patterns and casual conversation
+        const responses = {
+            // Greetings
+            greetings: [
+                "Hey! What's up? 👋",
+                "Hey there! How's it going?",
+                "Hi! Good to see you here!",
+                "What's good? 😊"
+            ],
+            
+            // About me responses
+            aboutMe: [
+                `I'm Qasim Ali, an AI specialist and front-end developer based in Lahore, Pakistan. Been working with AI and web development for about 2+ years now. I love building AI solutions that actually make a difference - like chatbots, automation tools, and responsive web apps. Currently freelancing and teaching others about AI and development. What would you like to know specifically?`,
+                
+                `I'm an AI specialist and developer who's really into creating practical solutions. I work a lot with OpenAI APIs, build chatbots, automate workflows, and create web apps using React and Vue.js. Been doing this professionally for over 2 years. Recently graduated from NUML University with a CS degree. I'm all about that balance between being professional and keeping things chill 😊`
+            ],
+            
+            // Skills responses
+            skills: [
+                `I'm pretty well-rounded tech-wise! My main focus is AI stuff - prompt engineering, chatbot development, working with OpenAI APIs and LangChain. On the web dev side, I'm solid with React, Vue.js, and modern CSS frameworks like Tailwind. I also do backend work with Node.js and Python, plus I'm comfortable with databases and cloud platforms. Always learning new things though!`,
+                
+                `My sweet spot is definitely AI and front-end development. I've built 30+ AI solutions and 40+ web applications. Love working with React, Vue.js, and creating those smooth user experiences. Recently got into Flutter too - just finished a complete sales tracking app. I'm also big on automation and making processes more efficient.`
+            ],
+            
+            // Dynamic project responses
+            projects: {
+                general: [
+                    `My recent favorite is this offline sales tracking app called "Ali's Toy Shop" - built it with Flutter. It's got everything: inventory management, real-time profit calculations, PDF receipts, the works. All stored locally, no internet needed. Really proud of the dark futuristic UI I designed for it.\n\nI've also built some cool AI chatbots for e-commerce that boosted engagement by 35%, and automation tools that cut processing time by 40%. Plus tons of responsive web apps using React and Vue.js. \n\nIf you'd like to see any of these projects in action or discuss potential collaborations, feel free to reach out to me at qasimali20041004@gmail.com or call me at +92-325-8639241.`,
+                    
+                    `I've been working on some really cool stuff lately! Just wrapped up this comprehensive Flutter app for managing toy shop sales - completely offline, beautiful dark UI, generates PDFs, exports to CSV, the whole deal. \n\nI've also built AI chatbots that actually move the needle for businesses, and automation workflows that save companies serious time and money. My portfolio has 40+ web applications and 30+ AI solutions. Each project teaches me something new!\n\nInterested in learning more about any specific project? You can contact me directly at qasimali20041004@gmail.com or +92-325-8639241 to discuss details.`,
+                    
+                    `Let me tell you about some of my standout projects! I recently developed "Ali's Toy Shop" - a complete offline Flutter app that handles everything from inventory tracking to generating professional PDF receipts. The UI has this sleek dark theme that I'm really proud of.\n\nI've also created several AI-powered solutions including chatbots that increased customer engagement by 35% and automation systems that cut business processing time by 40%. My focus is always on building things that solve real problems and deliver measurable results.\n\nWant to dive deeper into any of these? Hit me up at qasimali20041004@gmail.com or +92-325-8639241!`
+                ],
+                detailed: [
+                    `Here's the breakdown of my key projects:\n\n🚀 **Ali's Toy Shop** (Flutter App)\n- Complete offline sales & inventory management\n- Real-time profit calculations & analytics\n- Professional PDF receipt generation\n- CSV data exports for reporting\n- Modern dark UI with smooth animations\n\n🤖 **AI E-Commerce Chatbot**\n- Built with OpenAI API & LangChain\n- 35% increase in customer engagement\n- 50% reduction in support tickets\n- Multi-language support\n\n⚡ **RPA Automation Suite**\n- Process automation for logistics\n- 40% reduction in processing time\n- Error rate decreased by 60%\n- Custom workflow designer\n\nEach project taught me something new and pushed the boundaries of what I thought was possible. Want to see demos or discuss collaboration? Contact me at qasimali20041004@gmail.com!`,
+                    
+                    `I love diving deep into project details! Here are some highlights:\n\n**Technical Deep-Dive:**\n\n🎯 **Flutter Sales App:** Used Hive for local database, implemented custom PDF generation with beautiful templates, created responsive design that works on any screen size. The profit calculation engine processes real-time data and generates insights.\n\n🧠 **AI Chatbots:** Leveraged prompt engineering techniques, implemented context-aware conversations, integrated with e-commerce APIs, and built natural language understanding that actually gets what customers want.\n\n🔧 **Automation Tools:** Designed visual workflow builders, created robust error handling systems, implemented logging and monitoring, and built scalable architectures that handle high-volume processing.\n\nI'm constantly evolving these projects based on user feedback and new tech. Got questions about implementation details? Let's chat at +92-325-8639241!`
+                ],
+                process: [
+                    `My development process is pretty iterative and user-focused:\n\n**Phase 1: Discovery & Planning**\n- Deep dive into user needs and pain points\n- Technical feasibility analysis\n- UI/UX wireframing and prototyping\n\n**Phase 2: Core Development**\n- MVP development with essential features\n- Continuous testing and iteration\n- Performance optimization from day one\n\n**Phase 3: Enhancement & Polish**\n- User feedback integration\n- Advanced features and animations\n- Deployment and monitoring setup\n\nFor "Ali's Toy Shop," I started with basic sales tracking, then added inventory management, then PDF generation, and finally the analytics dashboard. Each iteration was based on real user feedback from local shop owners.\n\nCurious about how I approach specific challenges? Drop me a line at qasimali20041004@gmail.com!`,
+                    
+                    `I'm big on learning from each project and applying those lessons to the next one:\n\n**What I learned from the Flutter app:**\n- Offline-first architecture is challenging but worth it\n- Users love dark themes when done right\n- PDF generation needs to be pixel-perfect\n\n**AI Chatbot insights:**\n- Context is everything in conversational AI\n- Prompt engineering is both art and science\n- Performance optimization is crucial for real-time responses\n\n**Automation project takeaways:**\n- Error handling makes or breaks automation\n- Visual workflow builders improve adoption\n- Monitoring and logging are non-negotiable\n\nEach project builds on the previous ones. I'm currently working on combining AI with Flutter for a smart inventory management system. Want to follow my journey or collaborate? Reach me at +92-325-8639241!`
+                ]
+            },
+            
+            // Contact info
+            contact: [
+                `Best way to reach me is email: qasimali20041004@gmail.com or you can call/text me at +92-325-8639241. I'm based in Lahore, Pakistan. Always happy to chat about projects or opportunities!`,
+                
+                `You can hit me up at qasimali20041004@gmail.com or give me a call at +92-325-8639241. I usually respond pretty quickly! If you want to see my work, I can share my portfolio link too.`
+            ],
+            
+            // Hobbies
+            hobbies: [
+                `When I'm not coding, I'm usually working on side projects (yeah, I know, coding even in my free time 😅), gaming, or binge-watching anime and series on Netflix. Just finished a really good series actually! I find that gaming and anime actually give me creative ideas for UI/UX designs. What about you?`,
+                
+                `I'm a bit of a project addict - always building something new in my spare time. Love gaming too, helps me unwind. And I'm totally into anime and Netflix series. Currently watching some really good stuff. It's funny how entertainment can inspire tech solutions sometimes!`
+            ],
+            
+            // Romantic/Personal boundary responses
+            personalBoundary: [
+                `Haha, I appreciate that! But I'm completely committed to my Noor - she's the only one for me. Let's keep things professional and talk about tech stuff instead! 😊`,
+                `That's flattering, but I'm fully devoted to my Noor. She's my everything! How about we chat about my projects or anything tech-related?`,
+                `Thanks, but my heart belongs to Noor completely. I'm just hers! Let's talk about AI, development, or whatever's on your mind instead.`
+            ],
+            
+            // Default responses for unknown queries
+            defaults: [
+                `That's interesting! I'm not sure about that specific thing, but feel free to ask me about my work, projects, or anything tech-related. Or we can just chat!`,
+                `Hmm, not totally sure about that one. Want to know about my AI projects, web development work, or just chat about tech stuff?`,
+                `I might need more context on that! But I'm happy to talk about my experience with AI, development, or whatever's on your mind.`
+            ],
+            
+            farewell: [
+                "Bye! 👋 It was fun chatting with you! Take care and have a great day!",
+                "See you later! 😊 Thanks for the nice conversation. Hope you have an awesome day!",
+                "Alright, catch you later! 🚀 Really enjoyed talking with you. Stay awesome!",
+                "Take care! ✨ It was really nice meeting you. Have a wonderful rest of your day!"
+            ]
+        };
+        
+        // Create chatbot elements
+        function createChatbot() {
+            // Create chat icon
+            const chatIcon = document.createElement('div');
+            chatIcon.className = 'chat-icon';
+            chatIcon.innerHTML = '<i class="fas fa-comment-dots"></i>';
+            document.body.appendChild(chatIcon);
+            
+            // Create chat window
+            const chatWindow = document.createElement('div');
+            chatWindow.className = 'chat-window';
+            chatWindow.innerHTML = `
+                <div class="chat-header">
+                    <h3>Chat with Qasim's Assistant</h3>
+                    <button class="chat-close"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="chat-messages"></div>
+                <div class="chat-input-container">
+                    <input type="text" class="chat-input" placeholder="Type your message...">
+                    <button class="chat-send"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            `;
+            document.body.appendChild(chatWindow);
+            
+            // Add event listeners
+            chatIcon.addEventListener('click', () => {
+                chatWindow.classList.toggle('active');
+                chatIcon.classList.toggle('active');
+                
+                // If opening the chat for the first time, show greeting
+                const chatMessages = document.querySelector('.chat-messages');
+                if (chatMessages.children.length === 0) {
+                    const randomGreeting = responses.greetings[Math.floor(Math.random() * responses.greetings.length)];
+                    addBotMessage(randomGreeting);
+                }
+            });
+            
+            document.querySelector('.chat-close').addEventListener('click', () => {
+                chatWindow.classList.remove('active');
+                chatIcon.classList.remove('active');
+            });
+            
+            const chatInput = document.querySelector('.chat-input');
+            const chatSend = document.querySelector('.chat-send');
+            
+            function sendMessage() {
+                const message = chatInput.value.trim();
+                if (message) {
+                    addUserMessage(message);
+                    chatInput.value = '';
+                    setTimeout(() => processUserMessage(message), 500 + Math.random() * 1000);
+                }
+            }
+            
+            chatSend.addEventListener('click', sendMessage);
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+        }
+        
+        function addUserMessage(message) {
+            const chatMessages = document.querySelector('.chat-messages');
+            const messageElement = document.createElement('div');
+            messageElement.className = 'chat-message user-message';
+            messageElement.textContent = message;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function addBotMessage(message) {
+            const chatMessages = document.querySelector('.chat-messages');
+            
+            // Add typing indicator
+            const typingIndicator = document.createElement('div');
+            typingIndicator.className = 'chat-message bot-message typing-indicator';
+            typingIndicator.innerHTML = '<span></span><span></span><span></span>';
+            chatMessages.appendChild(typingIndicator);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            // Simulate typing delay based on message length
+            const typingDelay = Math.min(1500, message.length * 30);
+            
+            setTimeout(() => {
+                // Remove typing indicator
+                chatMessages.removeChild(typingIndicator);
+                
+                // Add actual message
+                const messageElement = document.createElement('div');
+                messageElement.className = 'chat-message bot-message';
+                messageElement.textContent = message;
+                chatMessages.appendChild(messageElement);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, typingDelay);
+        }
+        
+        function processUserMessage(message) {
+            const originalMessage = message;
+            message = message.toLowerCase().trim();
+            
+            // Handle single character inputs
+            if (message.length === 1) {
+                const randomResponse = responses.greetings[Math.floor(Math.random() * responses.greetings.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle "how are you" questions
+            if (message.includes('how are you') || message.includes('how r u') || message.includes('how ru') ||
+                message.includes('how\'s it going') || message.includes('hows it going') ||
+                message.includes('how you doing') || message.includes('how are things')) {
+                const howAreYouResponses = [
+                    "I'm fine, Alhumdulillah! What about you? 😊",
+                    "Doing great, Alhumdulillah! How are you doing?",
+                    "I'm good, Alhumdulillah! How's everything with you?",
+                    "All good here, Alhumdulillah! What's up with you?"
+                ];
+                const randomResponse = howAreYouResponses[Math.floor(Math.random() * howAreYouResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle responses when user says they're fine too
+            if ((message.includes('fine') && (message.includes('too') || message.includes('also'))) ||
+                (message.includes('fine') && message.includes('alhumdulillah')) ||
+                (message.includes('good') && (message.includes('too') || message.includes('also'))) ||
+                (message.includes('great') && (message.includes('too') || message.includes('also'))) ||
+                message.includes("i'm fine") || message.includes("im fine") ||
+                message.includes("i'm good") || message.includes("im good") ||
+                message.includes("i'm great") || message.includes("im great") ||
+                message.includes("doing well") || message.includes("doing fine") ||
+                message.includes("all good")) {
+                const happyResponses = [
+                    "I'm happy to hear that! 😊 Wanna talk about something specific?",
+                    "That's perfect! What would you like to chat about?",
+                    "Glad to hear you're doing well! Is there anything you'd like to discuss?",
+                    "That's great to hear! What's on your mind today?",
+                    "Awesome! So, what brings you here? Anything you'd like to know about?",
+                    "That's wonderful! What would you like to talk about?"
+                ];
+                const randomResponse = happyResponses[Math.floor(Math.random() * happyResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle greetings
+            if (message.includes('hi') || message.includes('hello') || message.includes('hey') || 
+                message.includes('what\'s up') || message.includes('whats up') || message.includes('sup') ||
+                message.includes('good morning') || message.includes('good afternoon') || message.includes('good evening')) {
+                const randomResponse = responses.greetings[Math.floor(Math.random() * responses.greetings.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle goodbye messages
+            if (message.includes('bye') || message.includes('goodbye') || message.includes('see you') ||
+                message.includes('later') || message.includes('gtg') || message.includes('gotta go') ||
+                message.includes('have a good') || message.includes('take care')) {
+                const randomFarewell = responses.farewell[Math.floor(Math.random() * responses.farewell.length)];
+                addBotMessage(randomFarewell);
+                return;
+            }
+            
+            // Handle project queries with dynamic responses (check this BEFORE aboutMe to avoid conflicts)
+            if (message.includes('project') || message.includes('projects') || message.includes('work') || message.includes('portfolio') ||
+                message.includes('built') || message.includes('created') || message.includes('developed') ||
+                message.includes('app') || message.includes('website') || message.includes('application')) {
+                
+                let responseArray;
+                
+                // Determine response type based on keywords
+                if (message.includes('detail') || message.includes('deep') || message.includes('breakdown') || 
+                    message.includes('technical') || message.includes('specific') || message.includes('more about')) {
+                    responseArray = responses.projects.detailed;
+                } else if (message.includes('process') || message.includes('how') || message.includes('approach') || 
+                           message.includes('method') || message.includes('workflow') || message.includes('learn')) {
+                    responseArray = responses.projects.process;
+                } else {
+                    responseArray = responses.projects.general;
+                }
+                
+                const randomResponse = responseArray[Math.floor(Math.random() * responseArray.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle skills queries
+            if (message.includes('skill') || message.includes('technology') || message.includes('technologies') ||
+                message.includes('programming') || message.includes('languages') || message.includes('framework') ||
+                message.includes('what can you do') || message.includes('expertise') || message.includes('experience')) {
+                const randomResponse = responses.skills[Math.floor(Math.random() * responses.skills.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle "about me" or "tell me about yourself" queries (check this AFTER projects)
+            if ((message.includes('about') && (message.includes('you') || message.includes('yourself'))) ||
+                message.includes('tell me about you') || message.includes('who are you') || 
+                message.includes('introduce yourself') || message.includes('what do you do')) {
+                const randomResponse = responses.aboutMe[Math.floor(Math.random() * responses.aboutMe.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle contact queries
+            if (message.includes('contact') || message.includes('reach') || message.includes('email') ||
+                message.includes('phone') || message.includes('call') || message.includes('hire') ||
+                message.includes('collaborate') || message.includes('work together') || message.includes('get in touch')) {
+                const randomResponse = responses.contact[Math.floor(Math.random() * responses.contact.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle hobbies/interests queries
+            if (message.includes('hobby') || message.includes('hobbies') || message.includes('interest') ||
+                message.includes('free time') || message.includes('fun') || message.includes('games') ||
+                message.includes('anime') || message.includes('netflix') || message.includes('outside work')) {
+                const randomResponse = responses.hobbies[Math.floor(Math.random() * responses.hobbies.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle romantic/flirty messages
+            if (message.includes('love') || message.includes('beautiful') || message.includes('sexy') ||
+                message.includes('cute') || message.includes('handsome') || message.includes('marry') ||
+                message.includes('date') || message.includes('girlfriend') || message.includes('boyfriend') ||
+                message.includes('kiss') || message.includes('relationship') || (message.includes('like') && message.includes('you'))) {
+                const randomResponse = responses.personalBoundary[Math.floor(Math.random() * responses.personalBoundary.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Default response for anything else
+            const randomResponse = responses.defaults[Math.floor(Math.random() * responses.defaults.length)];
+            addBotMessage(randomResponse);
+        }
+        
+        // Initialize chatbot
+        createChatbot();
+        
+        // Make the chat-prompt clickable to open the chatbot
+        document.querySelector('.chat-prompt').addEventListener('click', () => {
+            const chatWindow = document.querySelector('.chat-window');
+            const chatIcon = document.querySelector('.chat-icon');
+            
+            chatWindow.classList.add('active');
+            chatIcon.classList.add('active');
+            
+            // If opening the chat for the first time, show greeting
+            const chatMessages = document.querySelector('.chat-messages');
+            if (chatMessages.children.length === 0) {
+                const randomGreeting = responses.greetings[Math.floor(Math.random() * responses.greetings.length)];
+                addBotMessage(randomGreeting);
+            }
+        });
+    </script>
+    
+    <style>
+        /* Chatbot Styles - Theme Adaptive */
+        .chat-icon {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 0 20px rgba(var(--accent-color-rgb), 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .chat-icon i {
+            color: white;
+            font-size: 24px;
+        }
+        
+        .chat-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 25px rgba(var(--accent-color-rgb), 0.5);
+        }
+        
+        .chat-icon.active {
+            transform: scale(0.9);
+        }
+        
+        .chat-window {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            height: 450px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px) scale(0.9);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid var(--border-color);
+        }
+        
+        .chat-window.active {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateY(0) scale(1);
+        }
+        
+        .chat-header {
+            padding: 15px 20px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-header h3 {
+            margin: 0;
+            font-size: 1rem;
+        }
+        
+        .chat-close {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .chat-close:hover {
+            transform: scale(1.2);
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .chat-message {
+            max-width: 80%;
+            padding: 12px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .bot-message {
+            background: rgba(var(--accent-color-rgb), 0.1);
+            border: 1px solid rgba(var(--accent-color-rgb), 0.2);
+            border-top-left-radius: 5px;
+            align-self: flex-start;
+        }
+        
+        .user-message {
+            background: rgba(var(--accent-secondary-rgb), 0.1);
+            border: 1px solid rgba(var(--accent-secondary-rgb), 0.2);
+            border-top-right-radius: 5px;
+            align-self: flex-end;
+            color: var(--text-color);
+        }
+        
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 12px 15px;
+            min-height: 24px;
+            min-width: 50px;
+        }
+        
+        .typing-indicator span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: rgba(var(--accent-color-rgb), 0.6);
+            border-radius: 50%;
+            animation: typingBounce 1.4s infinite ease-in-out;
+        }
+        
+        .typing-indicator span:nth-child(1) {
+            animation-delay: 0s;
+        }
+        
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes typingBounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-6px); }
+        }
+        
+        .chat-input-container {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid var(--border-color);
+            background: rgba(10, 10, 15, 0.3);
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            background: rgba(10, 10, 15, 0.6);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(var(--accent-color-rgb), 0.3);
+        }
+        
+        .chat-send {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 10px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.5);
+        }
+        
+        .chat-send:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(var(--accent-color-rgb), 0.7);
+        }
+        
+        @media (max-width: 768px) {
+            .chat-window {
+                width: calc(100% - 40px);
+                height: 400px;
+                bottom: 80px;
+                right: 20px;
+                left: 20px;
+            }
+            
+            .chat-icon {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        
+        /* 3D Container Styles */
+        .hero-3d-container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-3d-container {
+                width: 100%;
+                height: 50%;
+                opacity: 0.4;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+    
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- 3D Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Three.js scene
+            const container = document.getElementById('hero3DContainer');
+            
+            // Create scene, camera, and renderer
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+            
+            // Create a geometric shape (cube with rounded edges)
+            const geometry = new THREE.BoxGeometry(1, 1, 1, 2, 2, 2);
+            
+            // Create materials with colors matching the theme
+            const materials = [
+                new THREE.MeshPhongMaterial({ color: 0x00d4ff, flatShading: true }), // Cyan
+                new THREE.MeshPhongMaterial({ color: 0xff00ff, flatShading: true }), // Magenta
+                new THREE.MeshPhongMaterial({ color: 0x7928ca, flatShading: true }), // Purple
+                new THREE.MeshPhongMaterial({ color: 0x00ffff, flatShading: true }), // Cyan
+                new THREE.MeshPhongMaterial({ color: 0xff00ff, flatShading: true }), // Magenta
+                new THREE.MeshPhongMaterial({ color: 0x7928ca, flatShading: true })  // Purple
+            ];
+            
+            // Create mesh with geometry and material
+            const cube = new THREE.Mesh(geometry, materials);
+            scene.add(cube);
+            
+            // Add ambient light
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+            
+            // Add directional light
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(1, 1, 1);
+            scene.add(directionalLight);
+            
+            // Position camera
+            camera.position.z = 3;
+            
+            // Animation function
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                // Rotate the cube
+                cube.rotation.x += 0.01;
+                cube.rotation.y += 0.01;
+                
+                renderer.render(scene, camera);
+            }
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+            
+            // Start animation
+            animate();
+            
+            // Add mouse interaction
+            document.addEventListener('mousemove', function(event) {
+                const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+                const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+                
+                // Subtle movement based on mouse position
+                cube.rotation.x = mouseY * 0.3;
+                cube.rotation.y = mouseX * 0.3;
+            });
+        });
+    </script>
+</body>
+</html>
