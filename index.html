@@ -1,0 +1,3794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qasim Ali - Portfolio</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/svgs/solid/code.svg">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Dark Theme (Default) */
+            --bg-color: #0a0a0f;
+            --text-color: #e2e8f0;
+            --accent-color: #00d4ff;
+            --accent-color-rgb: 0, 212, 255;
+            --accent-secondary: #ff00ff;
+            --accent-secondary-rgb: 255, 0, 255;
+            --accent-tertiary: #00ffff;
+            --accent-tertiary-rgb: 0, 255, 255;
+            --transition-speed: 0.3s;
+            --secondary-color: #1a1a2e;
+            --muted-color: #94a3b8;
+            --border-color: #334155;
+            --card-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            --header-height: 70px;
+            --neon-glow: 0 0 20px rgba(0, 212, 255, 0.5);
+            --pink-glow: 0 0 20px rgba(255, 0, 128, 0.5);
+            --purple-glow: 0 0 20px rgba(121, 40, 202, 0.5);
+        }
+        
+        /* Light Theme Variables - Complete Redesign */
+        [data-theme="light"] {
+            --bg-color: #fefefe;
+            --text-color: #0f0f23;
+            --accent-color: #ff6b35;
+            --accent-color-rgb: 255, 107, 53;
+            --accent-secondary: #4ecdc4;
+            --accent-secondary-rgb: 78, 205, 196;
+            --accent-tertiary: #45b7d1;
+            --accent-tertiary-rgb: 69, 183, 209;
+            --secondary-color: #f7f9fc;
+            --muted-color: #64748b;
+            --border-color: #e2e8f0;
+            --card-bg: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            --neon-glow: 0 0 30px rgba(255, 107, 53, 0.3);
+            --pink-glow: 0 0 30px rgba(78, 205, 196, 0.3);
+            --purple-glow: 0 0 30px rgba(69, 183, 209, 0.3);
+        }
+        
+        /* Light Theme Body and Background - Modern Design */
+        [data-theme="light"] body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fefefe 0%, #f0f4f8 25%, #e8f4f8 50%, #f0f4f8 75%, #fefefe 100%);
+            color: var(--text-color);
+            font-weight: 400;
+            letter-spacing: -0.025em;
+        }
+        
+        [data-theme="light"] body::before {
+            background: 
+                radial-gradient(circle at var(--mouse-x, 20%) var(--mouse-y, 80%), rgba(255, 107, 53, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at calc(100% - var(--mouse-x, 20%)) calc(100% - var(--mouse-y, 20%)), rgba(78, 205, 196, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at calc(var(--mouse-x, 40%) + 20%) calc(var(--mouse-y, 40%) - 20%), rgba(69, 183, 209, 0.05) 0%, transparent 50%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--bg-color) 0%, var(--secondary-color) 50%, var(--bg-color) 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at var(--mouse-x, 20%) var(--mouse-y, 80%), rgba(var(--accent-color-rgb, 0, 212, 255), 0.2) 0%, transparent 50%),
+                radial-gradient(circle at calc(100% - var(--mouse-x, 20%)) calc(100% - var(--mouse-y, 20%)), rgba(var(--accent-secondary-rgb, 255, 0, 128), 0.2) 0%, transparent 50%),
+                radial-gradient(circle at calc(var(--mouse-x, 40%) + 20%) calc(var(--mouse-y, 40%) - 20%), rgba(var(--accent-tertiary-rgb, 0, 255, 255), 0.15) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+            transition: background 0.5s ease, transform 0.1s ease;
+            will-change: background, transform;
+        }
+        
+        @keyframes backgroundPulse {
+            0% {
+                background: 
+                    radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(255, 0, 128, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 40% 40%, rgba(121, 40, 202, 0.1) 0%, transparent 50%);
+            }
+            50% {
+                background: 
+                    radial-gradient(circle at 30% 70%, rgba(0, 212, 255, 0.2) 0%, transparent 60%),
+                    radial-gradient(circle at 70% 30%, rgba(255, 0, 128, 0.2) 0%, transparent 60%),
+                    radial-gradient(circle at 50% 50%, rgba(121, 40, 202, 0.15) 0%, transparent 60%);
+            }
+            100% {
+                background: 
+                    radial-gradient(circle at 40% 60%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 60% 40%, rgba(255, 0, 128, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 45% 45%, rgba(121, 40, 202, 0.1) 0%, transparent 50%);
+            }
+        }
+        
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            opacity: 0.8;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.1);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            height: var(--header-height);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Light mode header styling - Modern Glass */
+        [data-theme="light"] header {
+            background: rgba(254, 254, 254, 0.92);
+            border: none;
+            border-bottom: 3px solid transparent;
+            border-image: linear-gradient(90deg, var(--accent-color), var(--accent-secondary), var(--accent-tertiary)) 1;
+            box-shadow: 0 8px 32px rgba(15, 15, 35, 0.08), 0 2px 16px rgba(255, 107, 53, 0.12);
+            backdrop-filter: blur(24px) saturate(120%);
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary), var(--accent-tertiary), var(--accent-secondary), var(--accent-color));
+            background-size: 200% 100%;
+            animation: gradientBorder 3s linear infinite;
+            box-shadow: var(--neon-glow);
+        }
+        
+        @keyframes gradientBorder {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-shadow: var(--neon-glow);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            border-radius: 5px;
+            filter: blur(15px);
+            opacity: 0.3;
+            background-color: var(--accent-color);
+            z-index: -1;
+            animation: pulseLogo 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes pulseLogo {
+            0% { opacity: 0.2; transform: scale(0.95); }
+            100% { opacity: 0.4; transform: scale(1.05); }
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+        }
+        
+        #theme-toggle-btn {
+            background: none;
+            border: none;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #theme-toggle-btn:hover {
+            transform: rotate(30deg);
+            box-shadow: var(--neon-glow);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--header-height);
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 60%;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: var(--muted-color);
+        }
+        
+        .hero-cta {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+            color: var(--bg-color);
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            box-shadow: var(--neon-glow);
+        }
+        
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s ease;
+            z-index: -1;
+        }
+        
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), var(--neon-glow);
+        }
+        
+        .hero-cta:hover::before {
+            left: 100%;
+        }
+        
+        .hero-info {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .info-item {
+            margin-right: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .info-item i {
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--accent-color), var(--accent-secondary), var(--accent-tertiary), var(--accent-secondary), var(--accent-color));
+            background-size: 400% 400%;
+            z-index: -1;
+            border-radius: 12px;
+            animation: glowingBorder 10s ease infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        @keyframes glowingBorder {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: transparent;
+        }
+        
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+        
+        .skill-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+            text-shadow: var(--neon-glow);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .skill-meters {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+        
+        .skill-meter {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+        
+        .skill-meter-label {
+            width: 130px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+        
+        .skill-meter-bar {
+            flex: 1;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        /* Light mode skill meter bar styling */
+        [data-theme="light"] .skill-meter-bar {
+            background-color: rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Enhanced light mode skill card styling - Neumorphic Design */
+        [data-theme="light"] .skill-card {
+            background: linear-gradient(145deg, #ffffff, #f0f4f8);
+            border: none;
+            border-radius: 20px;
+            box-shadow: 
+                20px 20px 40px rgba(15, 15, 35, 0.08),
+                -20px -20px 40px rgba(255, 255, 255, 0.9),
+                inset 0 0 0 1px rgba(255, 107, 53, 0.1);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        [data-theme="light"] .skill-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 
+                25px 25px 50px rgba(15, 15, 35, 0.12),
+                -25px -25px 50px rgba(255, 255, 255, 1),
+                inset 0 0 0 2px rgba(255, 107, 53, 0.3),
+                0 0 40px rgba(255, 107, 53, 0.15);
+        }
+        
+        [data-theme="light"] .skill-title {
+            font-family: 'Poppins', sans-serif;
+            color: transparent;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary), var(--accent-tertiary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: -0.02em;
+            text-shadow: none;
+        }
+        
+        [data-theme="light"] .skill-meter-fill {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary)) !important;
+            box-shadow: 
+                0 0 20px rgba(255, 107, 53, 0.4),
+                inset 0 2px 4px rgba(255, 255, 255, 0.3) !important;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        [data-theme="light"] .skill-meter-bar {
+            background: linear-gradient(145deg, #f0f4f8, #e2e8f0);
+            border: none;
+            border-radius: 12px;
+            box-shadow: 
+                inset 5px 5px 10px rgba(15, 15, 35, 0.1),
+                inset -5px -5px 10px rgba(255, 255, 255, 0.8);
+        }
+        
+        [data-theme="light"] .skill-meter-percentage {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+        }
+        
+        [data-theme="light"] .skill-meter-label {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: -0.01em;
+        }
+        
+        .skill-meter-fill {
+            height: 100%;
+            background-color: var(--accent-color);
+            border-radius: 5px;
+            transition: width 1.5s ease-in-out;
+            box-shadow: var(--neon-glow);
+            animation: pulseMeter 2s infinite alternate;
+        }
+        
+        @keyframes pulseMeter {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        
+        .skill-meter-percentage {
+            width: 40px;
+            font-size: 0.8rem;
+            text-align: right;
+            color: var(--accent-color);
+        }
+        
+        @keyframes pulseBullet {
+            0% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        /* Technical Instructor Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            perspective: 1500px; /* Enhanced 3D perspective effect */
+            transform-style: preserve-3d;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            background: linear-gradient(to bottom, var(--accent-color), var(--accent-secondary), #00c8ff, #8a2be2, var(--accent-tertiary));
+            top: 0;
+            bottom: 0;
+            left: 0;
+            margin-left: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 35px rgba(var(--accent-color-rgb), 0.9), 0 0 25px #00c8ff90, 0 0 15px #8a2be280;
+            animation: pulseTimeline 4s infinite alternate;
+            transform: translateZ(20px); /* Enhanced 3D effect */
+        }
+        
+        @keyframes pulseTimeline {
+            0% { opacity: 0.8; box-shadow: 0 0 20px rgba(var(--accent-color-rgb), 0.7), 0 0 15px #00c8ff70, 0 0 10px #8a2be270; }
+            50% { opacity: 0.9; box-shadow: 0 0 30px rgba(var(--accent-color-rgb), 0.8), 0 0 20px #00c8ff80, 0 0 15px #8a2be280; }
+            100% { opacity: 1; box-shadow: 0 0 40px rgba(var(--accent-color-rgb), 1), 0 0 30px #00c8ffa0, 0 0 20px #8a2be290; }
+        }
+        
+        .timeline-item {
+            padding: 50px 50px 50px 80px;
+            position: relative;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(22, 33, 62, 0.9) 100%);
+            border-radius: 25px;
+            border: 2px solid rgba(var(--accent-color-rgb), 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 5px 15px rgba(var(--accent-color-rgb), 0.1);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            transform: translateZ(0px) rotateX(0deg) rotateY(0deg);
+            transform-style: preserve-3d;
+            overflow: hidden;
+        }
+        
+        /* Light mode timeline item styling */
+        [data-theme="light"] .timeline-item {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
+            border: 2px solid rgba(99, 102, 241, 0.2);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.1), 0 8px 32px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(20px);
+        }
+        
+        .timeline-item:hover {
+            transform: translateY(-20px) scale(1.02) rotateX(3deg) rotateY(1deg);
+            border-color: var(--accent-color);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 
+                      0 0 40px rgba(var(--accent-color-rgb), 0.7),
+                      0 0 30px rgba(0, 200, 255, 0.6),
+                      0 0 20px rgba(138, 43, 226, 0.5);
+        }
+        
+        /* Light mode hover effect */
+        [data-theme="light"] .timeline-item:hover {
+            transform: translateY(-15px) scale(1.02) rotateX(2deg) rotateY(1deg);
+            border-color: var(--accent-color);
+            box-shadow: 0 30px 60px rgba(99, 102, 241, 0.15), 
+                      0 0 40px rgba(99, 102, 241, 0.25),
+                      0 0 30px rgba(236, 72, 153, 0.15);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), #00c8ff, #8a2be2, var(--accent-tertiary));
+            background-size: 400% 400%;
+            left: -18px;
+            top: 40px;
+            z-index: 1;
+            box-shadow: 0 0 20px rgba(var(--accent-color-rgb), 0.9), 0 0 15px rgba(0, 200, 255, 0.8), inset 0 0 10px rgba(255, 255, 255, 0.5);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: pulseTimelinePoint 3s infinite alternate, gradientMove 8s infinite linear;
+            transform: translateZ(20px); /* 3D effect */
+        }
+        
+        @keyframes pulseTimelinePoint {
+            0% { transform: translateZ(20px) scale(0.9); box-shadow: 0 0 20px rgba(var(--accent-color-rgb), 0.7), 0 0 15px rgba(0, 200, 255, 0.6), 0 0 10px rgba(138, 43, 226, 0.5); }
+            50% { transform: translateZ(25px) scale(1.0); box-shadow: 0 0 25px rgba(var(--accent-color-rgb), 0.8), 0 0 20px rgba(0, 200, 255, 0.7), 0 0 15px rgba(138, 43, 226, 0.6); }
+            100% { transform: translateZ(30px) scale(1.1); box-shadow: 0 0 35px rgba(var(--accent-color-rgb), 1), 0 0 30px rgba(0, 200, 255, 0.9), 0 0 20px rgba(138, 43, 226, 0.8); }
+        }
+        
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 50% 100%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 50% 0%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .timeline-item:hover::before {
+            transform: translateZ(40px) scale(1.5);
+            box-shadow: 0 0 45px rgba(var(--accent-color-rgb), 1), 0 0 35px rgba(0, 200, 255, 1), 0 0 25px rgba(138, 43, 226, 0.9);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            pointer-events: none;
+            opacity: 0.5;
+        }
+        
+        .timeline-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, var(--text-color), var(--accent-color), #00c8ff, #8a2be2, var(--accent-secondary));
+            background-size: 400% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            animation: textGradient 8s linear infinite;
+            transform: translateZ(10px); /* Enhanced 3D effect */
+            text-shadow: 0 5px 20px rgba(0, 200, 255, 0.6), 0 3px 10px rgba(138, 43, 226, 0.5);
+            position: relative;
+        }
+        
+        @keyframes textGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .timeline-subtitle {
+            font-size: 1.35rem;
+            color: var(--muted-color);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            transform: translateZ(3px); /* 3D effect */
+        }
+        
+        .timeline-location {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateZ(2px); /* 3D effect */
+        }
+        
+        .timeline-location i {
+            color: var(--accent-secondary);
+            font-size: 1rem;
+            text-shadow: 0 0 10px rgba(var(--accent-secondary-rgb), 0.7);
+        }
+        
+        .timeline-period {
+            background: linear-gradient(90deg, rgba(var(--accent-color-rgb), 0.2), rgba(var(--accent-secondary-rgb), 0.2), rgba(var(--accent-tertiary-rgb), 0.2));
+            color: var(--accent-color);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 1px solid rgba(var(--accent-color-rgb), 0.3);
+            box-shadow: 0 4px 15px rgba(var(--accent-color-rgb), 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-period:hover {
+            box-shadow: 0 6px 20px rgba(var(--accent-color-rgb), 0.25), inset 0 1px 3px rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .timeline-achievements {
+            list-style: none;
+            margin-top: 25px;
+        }
+        
+        .timeline-achievements li {
+            margin-bottom: 18px;
+            position: relative;
+            padding-left: 30px;
+            line-height: 1.7;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+        }
+        
+        .timeline-achievements li:hover {
+            transform: translateX(8px);
+            color: var(--accent-color);
+        }
+        
+        .timeline-achievements li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-secondary);
+            font-size: 1.3rem;
+            animation: pulseBullet 2s infinite alternate;
+            text-shadow: 0 0 8px rgba(var(--accent-secondary-rgb), 0.6);
+        }
+        
+        /* Education Section */
+        .education-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .education-item {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .education-item:hover {
+            border-color: var(--accent-color);
+        }
+        
+        .education-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .education-subtitle {
+            font-size: 1rem;
+            color: var(--muted-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .education-period {
+            background-color: rgba(132, 204, 22, 0.1);
+            color: var(--accent-color);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .coursework-title {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+        
+        .coursework-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .coursework-item {
+            background-color: var(--secondary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 212, 255, 0.1);
+            border-color: var(--accent-color);
+        }
+        
+        .project-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(10, 10, 15, 0.8) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover .project-image::before {
+            opacity: 1;
+        }
+        
+        .project-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            transition: color 0.3s ease;
+        }
+        
+        .project-card:hover .project-title {
+            color: var(--accent-color);
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .tech-tag {
+            background-color: rgba(0, 212, 255, 0.1);
+            color: var(--accent-color);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover .tech-tag {
+            background-color: rgba(0, 212, 255, 0.2);
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+        
+        .project-description {
+            font-size: 0.95rem;
+            color: var(--muted-color);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .project-link {
+            color: var(--accent-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-bottom: 3px;
+        }
+        
+        .project-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .project-link:hover::after {
+            width: 100%;
+        }
+        
+        .project-link i {
+            margin-right: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-link:hover i {
+            transform: translateY(-3px);
+        }
+        
+        /* Certifications Section */
+        .certifications-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .certification-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .certification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 212, 255, 0.1);
+            border-color: var(--accent-color);
+        }
+        
+        .certification-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+            text-shadow: var(--neon-glow);
+            animation: pulse 2s infinite alternate;
+        }
+        
+        .certification-content {
+            flex-grow: 1;
+        }
+        
+        .certification-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            transition: color 0.3s ease;
+        }
+        
+        .certification-card:hover .certification-title {
+            color: var(--accent-color);
+        }
+        
+        .certification-issuer {
+            font-size: 0.9rem;
+            color: var(--muted-color);
+            margin-bottom: 5px;
+        }
+        
+        .certification-date {
+            font-size: 0.85rem;
+            color: var(--muted-color);
+            margin-bottom: 15px;
+        }
+        
+        .certification-link {
+            color: var(--accent-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            padding-bottom: 3px;
+        }
+        
+        .certification-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .certification-link:hover::after {
+            width: 100%;
+        }
+        
+        .certification-link i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .certification-link:hover i {
+            transform: translateX(3px);
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .contact-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-description {
+            margin-bottom: 30px;
+            color: var(--muted-color);
+        }
+        
+        .contact-links {
+            list-style: none;
+        }
+        
+        .contact-links li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-links i {
+            width: 30px;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+        
+        .contact-info-additional {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.9) 100%);
+            border-radius: 20px;
+            padding: 45px;
+            border: 2px solid rgba(var(--accent-color-rgb), 0.3);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 5px 15px rgba(var(--accent-color-rgb), 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transform: translateZ(0);
+        }
+        
+        /* Light mode styling for contact info additional */
+        [data-theme="light"] .contact-info-additional {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
+            border: 2px solid rgba(99, 102, 241, 0.25);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.12), 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Light mode education and certification cards */
+        [data-theme="light"] .education-item,
+        [data-theme="light"] .certification-card,
+        [data-theme="light"] .project-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            border: 2px solid rgba(99, 102, 241, 0.15);
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.1), 0 4px 16px rgba(0, 0, 0, 0.05);
+        }
+        
+        [data-theme="light"] .education-item:hover,
+        [data-theme="light"] .certification-card:hover,
+        [data-theme="light"] .project-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15), 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        [data-theme="light"] .education-title,
+        [data-theme="light"] .certification-title,
+        [data-theme="light"] .project-title {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        [data-theme="light"] .coursework-item {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            color: var(--accent-color);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        [data-theme="light"] .tech-tag {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(139, 92, 246, 0.1));
+            color: var(--accent-secondary);
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        [data-theme="light"] .education-period {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(99, 102, 241, 0.15));
+            color: var(--accent-tertiary);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            font-weight: 600;
+        }
+        
+        /* Enhanced hover effects for light mode tags */
+        [data-theme="light"] .coursework-item:hover {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-tertiary));
+            border: 1px solid var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(var(--accent-color-rgb), 0.3);
+        }
+        
+        [data-theme="light"] .tech-tag:hover {
+            background: linear-gradient(135deg, var(--accent-secondary), var(--accent-tertiary));
+            border: 1px solid var(--accent-secondary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(var(--accent-secondary-rgb), 0.3);
+        }
+        
+        [data-theme="light"] .education-period:hover {
+            background: linear-gradient(135deg, var(--accent-tertiary), var(--accent-color));
+            border: 1px solid var(--accent-tertiary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(var(--accent-tertiary-rgb), 0.3);
+        }
+        
+        /* Enhanced skill meter animations in light mode */
+        [data-theme="light"] .skill-card:hover .skill-meter-fill {
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary), var(--accent-tertiary)) !important;
+            box-shadow: 0 0 20px rgba(var(--accent-color-rgb), 0.5) !important;
+            animation: skillPulse 1.5s infinite alternate !important;
+        }
+        
+        @keyframes skillPulse {
+            0% { opacity: 0.8; transform: scaleY(1); }
+            100% { opacity: 1; transform: scaleY(1.1); }
+        }
+        
+        [data-theme="light"] .certification-icon {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
+        
+        /* Light mode section styling */
+        [data-theme="light"] .section-title {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary), var(--accent-tertiary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+        
+        [data-theme="light"] .section-title::after {
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary), var(--accent-tertiary));
+            height: 4px;
+            box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.4);
+        }
+        
+        .contact-info-additional:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+        
+        .contact-info-additional::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--accent-color), var(--accent-secondary), var(--accent-tertiary), var(--accent-secondary), var(--accent-color));
+            background-size: 400% 400%;
+            z-index: -1;
+            border-radius: 12px;
+            animation: glowingBorder 10s ease infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .contact-info-additional:hover::before {
+            opacity: 1;
+        }
+        
+        .chat-prompt {
+            margin-top: 35px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.15) 0%, rgba(var(--accent-secondary-rgb), 0.1) 100%);
+            border: 2px solid rgba(var(--accent-color-rgb), 0.3);
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: pulseChat 4s infinite ease-in-out;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transform: translateZ(0);
+        }
+        
+        /* Light mode styling for chat prompt */
+        [data-theme="light"] .chat-prompt {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.08) 100%);
+            border: 2px solid rgba(99, 102, 241, 0.25);
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15);
+        }
+        
+        [data-theme="light"] .chat-prompt:hover {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(236, 72, 153, 0.12) 100%);
+            border: 2px solid rgba(99, 102, 241, 0.4);
+            box-shadow: 0 12px 40px rgba(99, 102, 241, 0.25);
+        }
+        
+        @keyframes pulseChat {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(var(--accent-color-rgb), 0.4); }
+            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(var(--accent-color-rgb), 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(var(--accent-color-rgb), 0); }
+        }
+        
+        .chat-prompt i {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-right: 15px;
+            animation: robotPulse 2s infinite alternate ease-in-out;
+        }
+        
+        @keyframes robotPulse {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-5px) rotate(5deg); }
+        }
+        
+        .chat-prompt p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+        
+        .chat-prompt:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(var(--accent-color-rgb), 0.3);
+            cursor: pointer;
+        }
+        
+        /* Removed submit button styles as the contact form has been replaced with chatbot */
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        /* Light mode footer */
+        [data-theme="light"] footer {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-top: 2px solid rgba(99, 102, 241, 0.2);
+            box-shadow: 0 -4px 20px rgba(99, 102, 241, 0.1);
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .social-links li {
+            margin: 0 15px;
+        }
+        
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            color: var(--muted-color);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+    @media (max-width: 768px) {
+        .skill-meter {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+        }
+        
+        .skill-meter-label {
+            width: 100%;
+        }
+        
+        .skill-meter-percentage {
+            align-self: flex-end;
+            margin-top: -20px;
+        }
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                margin-bottom: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--secondary-color);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                z-index: 999;
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects-container,
+            .certifications-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .timeline-subtitle,
+            .education-subtitle {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .timeline-period,
+            .education-period {
+                margin-top: 5px;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+        
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            background-color: rgba(0, 212, 255, 0.1);
+            color: var(--accent-color);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid var(--accent-color);
+            box-shadow: var(--neon-glow);
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+        
+        .success-message i {
+            margin-right: 8px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .error-message {
+            background-color: rgba(255, 0, 128, 0.1);
+            color: var(--accent-secondary);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid var(--accent-secondary);
+            box-shadow: var(--pink-glow);
+            transition: opacity 0.3s ease;
+        }
+        
+        .error-message i {
+            margin-right: 8px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Qasim Ali</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li class="theme-toggle">
+                    <button id="theme-toggle-btn" aria-label="Toggle dark/light theme">
+                        <i class="fas fa-moon" id="theme-icon"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="container">
+            <div class="hero-3d-container" id="hero3DContainer"></div>
+            <div class="hero-content fade-in">
+                <h1 class="hero-title">Hi, I'm <span style="color: var(--accent-color);">Qasim Ali</span></h1>
+                <h2 class="hero-subtitle">AI Solutions Architect & Sales Strategist</h2>
+                <p class="hero-description">Results-driven AI Strategist and Full-Stack Developer with over 3+ years of sales experience and deep technical expertise. Specialist in bridging the gap between complex engineering and business revenue goals. Expert in leveraging OpenAI APIs, LangChain, and RPA to optimize workflows, achieving up to 50% cost reductions. Proficient in front-end development with React, Vue.js, and Tailwind CSS, delivering user-centric interfaces while utilizing strategic selling to close high-value client contracts.</p>
+                <a href="#contact" class="hero-cta">Get In Touch</a>
+                
+                <div class="hero-info">
+                    <div class="info-item fade-in delay-1">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Lahore, Pakistan</span>
+                    </div>
+                    <div class="info-item fade-in delay-2">
+                        <i class="fas fa-phone"></i>
+                        <span>+92-325-8639241</span>
+                    </div>
+                    <div class="info-item fade-in delay-3">
+                        <i class="fas fa-envelope"></i>
+                        <span>qasimali20041004@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-container">
+                <div class="skill-card fade-in">
+                    <h3 class="skill-title">Frontend</h3>
+                    <div class="skill-meters">
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">HTML</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 95%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">95%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">CSS3</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 90%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">90%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">JavaScript (ES6+)</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 85%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">85%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">React</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 80%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">80%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Vue.js</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 75%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">75%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-card fade-in delay-1">
+                    <h3 class="skill-title">Backend</h3>
+                    <div class="skill-meters">
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Node.js</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 80%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">80%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Express.js</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 75%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">75%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">REST APIs</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 85%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">85%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">MongoDB</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 70%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">70%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">SQL</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 60%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">60%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-card fade-in delay-2">
+                    <h3 class="skill-title">Tools & Technologies</h3>
+                    <div class="skill-meters">
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Git & GitHub</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 85%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">85%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Webpack/Vite</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 75%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">75%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Responsive Design</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 90%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">90%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">UI/UX Design</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 80%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">80%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Docker</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 50%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">50%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-card fade-in delay-3">
+                    <h3 class="skill-title">Technical Education</h3>
+                    <div class="skill-meters">
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Curriculum Development</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 95%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">95%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Workshop Facilitation</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 90%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">90%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Educational Content</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 85%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">85%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Student Mentoring</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 95%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">95%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Learning Assessment</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 90%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">90%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-card fade-in delay-4">
+                    <h3 class="skill-title">Soft Skills</h3>
+                    <div class="skill-meters">
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Problem Solving</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 90%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">90%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Communication</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 85%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">85%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Teamwork</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 90%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">90%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Adaptability</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 95%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">95%</div>
+                        </div>
+                        <div class="skill-meter">
+                            <div class="skill-meter-label">Leadership</div>
+                            <div class="skill-meter-bar">
+                                <div class="skill-meter-fill" style="width: 80%;"></div>
+                            </div>
+                            <div class="skill-meter-percentage">80%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <h3 class="timeline-title">Senior AI Specialist & Solutions Strategist (Freelance)</h3>
+                    <div class="timeline-subtitle">
+                        <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> Remote / Lahore, Pakistan</span>
+                        <span class="timeline-period">2023 – Present</span>
+                    </div>
+                    <ul class="timeline-achievements">
+                        <li><strong>Strategic Client Acquisition:</strong> Leveraged sales background to pitch and close 30+ AI-driven solutions, reducing operational costs by up to 50% for clients in diverse sectors.</li>
+                        <li><strong>Full-Stack Engineering:</strong> Developed 40+ responsive web applications using React, Vue.js, and Tailwind CSS, achieving 95% client satisfaction through agile methodologies.</li>
+                        <li><strong>AI System Architecture:</strong> Designed advanced prompt-based AI systems with OpenAI APIs and LangChain, improving decision-making efficiency by 30%.</li>
+                        <li><strong>Team Leadership:</strong> Mentored 20+ junior developers through code reviews and workshops, ensuring adherence to industry best practices.</li>
+                        <li><strong>Documentation:</strong> Authored comprehensive technical documentation and user guides to streamline client onboarding.</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item fade-in delay-1">
+                    <h3 class="timeline-title">AI Consultant & Technical Instructor</h3>
+                    <div class="timeline-subtitle">
+                        <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> Lahore, Pakistan</span>
+                        <span class="timeline-period">2022 – Present</span>
+                    </div>
+                    <ul class="timeline-achievements">
+                        <li><strong>Consultative Sales & Solutions:</strong> Delivered AI-driven business solutions that streamlined workflows and reduced operational costs by up to 60%.</li>
+                        <li><strong>Technical Training:</strong> Conducted 50+ training sessions on AI and full-stack development, achieving a 90% placement rate for candidates.</li>
+                        <li><strong>Curriculum Strategy:</strong> Designed and led coding bootcamps focused on AI and web development to support career growth.</li>
+                        <li><strong>Client Support:</strong> Resolved 100+ queries and incorporated feedback to enhance AI solutions and training programs.</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item fade-in delay-2">
+                    <h3 class="timeline-title">3D Modeler & Animator</h3>
+                    <div class="timeline-subtitle">
+                        <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> Remote</span>
+                        <span class="timeline-period">2019 - 2022</span>
+                    </div>
+                    <ul class="timeline-achievements">
+                        <li>Created detailed 3D models and animations for various client projects using industry-standard tools</li>
+                        <li>Developed realistic character models, environments, and product visualizations</li>
+                        <li>Implemented efficient rigging systems for character animation and movement</li>
+                        <li>Produced high-quality textures and materials to enhance visual appeal of 3D assets</li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section" id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-container">
+                <div class="education-item fade-in">
+                    <h3 class="education-title">Bachelor's Degree in Computer Science</h3>
+                    <div class="education-subtitle">
+                        <span>NUML University, Lahore</span>
+                        <span class="education-period">2020 - 2024</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--muted-color); margin-top: 8px; font-style: italic;">Graduated with Distinction</p>
+                    <h4 class="coursework-title">Relevant Coursework:</h4>
+                    <div class="coursework-list">
+                        <span class="coursework-item">Web Development</span>
+                        <span class="coursework-item">Database Systems</span>
+                        <span class="coursework-item">Software Engineering</span>
+                        <span class="coursework-item">UI/UX Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects section removed as requested -->
+
+    <!-- Certifications Section -->
+    <section class="section" id="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certifications-container">
+                <div class="certification-card fade-in">
+                    <div class="certification-icon">
+                        <i class="fab fa-hackerrank"></i>
+                    </div>
+                    <div class="certification-content">
+                        <h3 class="certification-title">Java (Basic)</h3>
+                        <p class="certification-issuer">HackerRank</p>
+                        <p class="certification-date">Issued 2024</p>
+                        <a href="https://www.hackerrank.com/certificates/48c584773631" target="_blank" class="certification-link">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="certification-card fade-in delay-1">
+                    <div class="certification-icon">
+                        <i class="fab fa-hackerrank"></i>
+                    </div>
+                    <div class="certification-content">
+                        <h3 class="certification-title">JavaScript (Intermediate)</h3>
+                        <p class="certification-issuer">HackerRank</p>
+                        <p class="certification-date">Issued 2024</p>
+                        <a href="https://www.hackerrank.com/certificates/a161eb5d80b0" target="_blank" class="certification-link">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="certification-card fade-in delay-2">
+                    <div class="certification-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="certification-content">
+                        <h3 class="certification-title">SEMrush Academy Certification</h3>
+                        <p class="certification-issuer">SEMrush</p>
+                        <p class="certification-date">Issued September 2025</p>
+                        <a href="https://static.semrush.com/academy/certificates/d9f8c820b4/qasim-ali_25.pdf" target="_blank" class="certification-link">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3 class="contact-title">Let's Connect</h3>
+                    <p class="contact-description">Feel free to reach out if you're looking for a developer, have a question, or just want to connect.</p>
+                    <ul class="contact-links">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>qasimali20041004@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+92-325-8639241</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Lahore, Pakistan</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-info-additional">
+                    <h3 class="contact-title">Chat with Me</h3>
+                    <p class="contact-description">Use the chat assistant in the bottom right corner to ask questions about my skills, experience, or to get in touch with me.</p>
+                    <div class="chat-prompt">
+                        <i class="fas fa-robot"></i>
+                        <p>My AI assistant is available 24/7 to help you learn more about my work or to help you contact me.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <ul class="social-links">
+                    <li><a href="https://github.com/ali-jpg-cmd" target="_blank"><i class="fab fa-github"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/qasim-ali-347ba7376/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                </ul>
+                <p class="copyright">© 2024 Qasim Ali. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Particle Background Canvas -->
+    <canvas id="particleCanvas"></canvas>
+    
+    <script>
+        // Initialize mouse position CSS variables for interactive gradients
+        document.documentElement.style.setProperty('--mouse-x', '20%');
+        document.documentElement.style.setProperty('--mouse-y', '80%');
+        
+        // Track mouse/touch movement for interactive gradients
+        function updateGradientPosition(x, y) {
+            const mouseXPercent = (x / window.innerWidth * 100).toFixed(2) + '%';
+            const mouseYPercent = (y / window.innerHeight * 100).toFixed(2) + '%';
+            
+            // Update CSS variables for gradient positions
+            document.documentElement.style.setProperty('--mouse-x', mouseXPercent);
+            document.documentElement.style.setProperty('--mouse-y', mouseYPercent);
+        }
+        
+        // Mouse events for gradient interaction
+        document.addEventListener('mousemove', (e) => {
+            updateGradientPosition(e.clientX, e.clientY);
+        });
+        
+        // Touch events for gradient interaction
+        document.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+                updateGradientPosition(e.touches[0].clientX, e.touches[0].clientY);
+            }
+        }, { passive: true });
+        
+        document.addEventListener('touchstart', (e) => {
+            if (e.touches.length > 0) {
+                updateGradientPosition(e.touches[0].clientX, e.touches[0].clientY);
+            }
+        }, { passive: true });
+        
+        // Particle Background
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Set canvas size
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Style canvas
+        canvas.style.position = 'fixed';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+        canvas.style.zIndex = '-2';
+        
+        // Mouse/touch interaction variables
+        let mouseX = null;
+        let mouseY = null;
+        let touchActive = false;
+        const interactionRadius = 150; // Radius of influence around cursor/touch
+        
+        // Particle settings
+        const particleCount = 100;
+        const particles = [];
+        const colors = ['rgba(0, 212, 255, 0.5)', 'rgba(255, 0, 128, 0.5)', 'rgba(121, 40, 202, 0.5)'];
+        
+        // Create particles
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2 + 1,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                speedX: Math.random() * 0.5 - 0.25,
+                speedY: Math.random() * 0.5 - 0.25,
+                opacity: Math.random() * 0.5 + 0.2,
+                baseSpeedX: Math.random() * 0.5 - 0.25, // Store original speed
+                baseSpeedY: Math.random() * 0.5 - 0.25,  // Store original speed
+                size: Math.random() * 2 + 1, // Base size
+                pulseDirection: Math.random() > 0.5 ? 1 : -1, // Direction of size pulsing
+                pulseSpeed: Math.random() * 0.02 + 0.01 // Speed of size pulsing
+            });
+        }
+        
+        // Mouse/touch event listeners
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        
+        document.addEventListener('mouseout', () => {
+            mouseX = null;
+            mouseY = null;
+        });
+        
+        // Touch events for mobile
+        document.addEventListener('touchstart', (e) => {
+            touchActive = true;
+            mouseX = e.touches[0].clientX;
+            mouseY = e.touches[0].clientY;
+        }, { passive: true });
+        
+        document.addEventListener('touchmove', (e) => {
+            mouseX = e.touches[0].clientX;
+            mouseY = e.touches[0].clientY;
+        }, { passive: true });
+        
+        document.addEventListener('touchend', () => {
+            touchActive = false;
+            mouseX = null;
+            mouseY = null;
+        }, { passive: true });
+        
+        // Draw and animate particles
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                // Calculate distance to mouse/touch if active
+                let distToMouse = Infinity;
+                if (mouseX !== null && mouseY !== null) {
+                    const dx = particle.x - mouseX;
+                    const dy = particle.y - mouseY;
+                    distToMouse = Math.sqrt(dx * dx + dy * dy);
+                }
+                
+                // Apply force if within interaction radius
+                if (distToMouse < interactionRadius) {
+                    // Calculate normalized direction vector away from cursor
+                    const dirX = (particle.x - mouseX) / distToMouse;
+                    const dirY = (particle.y - mouseY) / distToMouse;
+                    
+                    // Strength of repulsion (stronger when closer)
+                    const strength = 1 - distToMouse / interactionRadius;
+                    
+                    // Apply force to particle
+                    particle.speedX = particle.baseSpeedX + dirX * strength * 2;
+                    particle.speedY = particle.baseSpeedY + dirY * strength * 2;
+                    
+                    // Increase opacity and size when interacting
+                    particle.opacity = Math.min(0.8, particle.opacity + strength * 0.3);
+                    
+                    // Highlight particles near cursor
+                    particle.highlight = true;
+                } else {
+                    // Gradually return to base speed when not influenced
+                    particle.speedX = particle.speedX * 0.95 + particle.baseSpeedX * 0.05;
+                    particle.speedY = particle.speedY * 0.95 + particle.baseSpeedY * 0.05;
+                    
+                    // Return opacity to normal
+                    particle.opacity = Math.max(particle.opacity * 0.95, Math.random() * 0.3 + 0.2);
+                    particle.highlight = false;
+                }
+                
+                // Pulse size effect
+                particle.size += particle.pulseDirection * particle.pulseSpeed;
+                if (particle.size > particle.radius * 1.5 || particle.size < particle.radius * 0.7) {
+                    particle.pulseDirection *= -1;
+                }
+                
+                // Move particle
+                particle.x += particle.speedX;
+                particle.y += particle.speedY;
+                
+                // Wrap around edges
+                if (particle.x < 0) particle.x = canvas.width;
+                if (particle.x > canvas.width) particle.x = 0;
+                if (particle.y < 0) particle.y = canvas.height;
+                if (particle.y > canvas.height) particle.y = 0;
+                
+                // Draw particle
+                ctx.beginPath();
+                const particleSize = particle.highlight ? particle.size * 1.5 : particle.size;
+                ctx.arc(particle.x, particle.y, particleSize, 0, Math.PI * 2);
+                ctx.fillStyle = particle.color.replace('0.5', particle.opacity);
+                ctx.fill();
+                
+                // Draw connections
+                particles.forEach(otherParticle => {
+                    const dx = particle.x - otherParticle.x;
+                    const dy = particle.y - otherParticle.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        const connectionOpacity = (1 - distance / 100) * (particle.highlight || otherParticle.highlight ? 0.4 : 0.2);
+                        ctx.strokeStyle = particle.color.replace('0.5', connectionOpacity);
+                        ctx.lineWidth = particle.highlight || otherParticle.highlight ? 0.8 : 0.5;
+                        ctx.moveTo(particle.x, particle.y);
+                        ctx.lineTo(otherParticle.x, otherParticle.y);
+                        ctx.stroke();
+                    }
+                });
+            });
+            
+            requestAnimationFrame(drawParticles);
+        }
+        
+        drawParticles();
+        
+        // Theme Toggle Functionality
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        const themeIcon = document.getElementById('theme-icon');
+        
+        // Check for saved theme preference or use default
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        
+        // Update icon based on current theme
+        if (savedTheme === 'light') {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        // Toggle theme on button click
+        themeToggleBtn.addEventListener('click', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Toggle icon
+            if (newTheme === 'light') {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Intersection Observer for fade-in animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            fadeObserver.observe(element);
+        });
+        
+        // Enhanced chatbot for contact functionality
+        // The contact form has been replaced with an AI chatbot that can handle inquiries
+        // Users can interact with the chatbot to get information or request contact
+        
+        // Qasim Ali's Professional Chatbot - Enhanced Version with Personality
+        const qasimData = {
+            name: "Qasim Ali",
+            email: "qasimali20041004@gmail.com",
+            phone: "+92-325-8639241",
+            location: "Lahore, Pakistan",
+            portfolio: "Portfolio available (mention for link)",
+            
+            // Professional Info
+            title: "AI Solutions Architect & Sales Strategist",
+            experience: "3+ years of sales experience and deep technical expertise in AI solutions and web development",
+            education: "Bachelors in Computer Science from NUML University (2020-2024) - Graduated with Distinction",
+            
+            // Skills
+            skills: {
+                ai: ["Prompt Engineering", "Chatbot Development", "OpenAI API", "LangChain", "RPA", "TensorFlow", "PyTorch"],
+                frontend: ["React", "Vue.js", "Angular", "HTML5", "CSS3", "JavaScript", "Tailwind CSS", "Bootstrap"],
+                backend: ["Node.js", "Express.js", "Django", "Flask", "RESTful APIs", "GraphQL"],
+                databases: ["MongoDB", "MySQL", "PostgreSQL", "SQL Server"],
+                tools: ["Git", "GitHub", "Docker", "Firebase", "AWS", "Azure", "Netlify", "Vercel"],
+                other: ["Technical Writing", "SEO", "Figma", "Adobe XD"]
+            },
+            
+            // Projects
+            projects: {
+                toyShop: {
+                    name: "Ali's Toy Shop - Offline Sales Tracking App",
+                    tech: "Flutter, Hive Database, PDF Generation",
+                    description: "Complete offline inventory and sales management app with modern dark UI, real-time profit calculations, PDF receipts, CSV exports, and backup/restore functionality"
+                },
+                ecommerceChatbot: {
+                    name: "AI-Powered Commerce Chatbot",
+                    tech: "OpenAI API, LangChain",
+                    description: "Built a chatbot that acts as a sales agent, boosting customer engagement by 35% and reducing support queries by 50%"
+                },
+                automationTool: {
+                    name: "Logistics Automation Suite",
+                    tech: "RPA",
+                    description: "Developed an RPA-based automation tool for a logistics client, strategically cutting processing time by 40% and enhancing accuracy"
+                }
+            },
+            
+            // Personality and interests
+            personality: "professional but chill",
+            hobbies: ["making projects", "playing games", "watching anime", "watching series on Netflix"],
+            workStyle: "I love building things that actually solve problems and make life easier"
+        };
+
+        // Response patterns and casual conversation
+        const responses = {
+            // Greetings
+            greetings: [
+                "Hey! What's up? 👋",
+                "Hey there! How's it going?",
+                "Hi! Good to see you here!",
+                "What's good? 😊",
+                "Oh hey! Nice to see you here!",
+                "Hey! Welcome! 😄",
+                "Hi there! What brings you here today?",
+                "Oh, hello! Great to meet you! 👋"
+            ],
+            
+            // About me responses
+            aboutMe: [
+                `I'm Qasim Ali, an AI Solutions Architect and Sales Strategist based in Lahore, Pakistan. I have over 3+ years of sales experience combined with deep technical expertise. I specialize in bridging the gap between complex engineering and business revenue goals. I leverage OpenAI APIs, LangChain, and RPA to optimize workflows, achieving up to 50% cost reductions. I've developed 40+ responsive web applications and closed 30+ AI-driven solutions for clients. Currently freelancing and teaching others about AI and development. What would you like to know specifically?`,
+                
+                `I'm a results-driven AI Strategist and Full-Stack Developer with over 3+ years of sales experience. I work extensively with OpenAI APIs, LangChain, and RPA to create solutions that drive real business impact. I've built 40+ web applications using React, Vue.js, and Tailwind CSS, and delivered AI solutions that reduced operational costs by up to 50%. I recently graduated from NUML University with a CS degree with Distinction. I'm all about that balance between being professional and keeping things chill 😊`,
+                
+                `Oh, where do I start? 😅 I'm Qasim, and honestly, I love what I do. I've been doing this AI and sales thing for over 3 years now, and it's been wild! I basically help companies save money and work smarter using AI - like, I've helped clients cut costs by up to 50% which is pretty cool, right? I've built tons of web apps and closed a bunch of AI projects. Plus I teach people about this stuff too. What interests you most?`,
+                
+                `Well, I'm Qasim! I'm from Lahore, Pakistan. I do AI solutions architecture and sales strategy - basically I'm that person who talks to clients AND builds the tech, which is pretty rare honestly. I've been doing this for 3+ years, built 40+ web apps, closed 30+ AI projects. Just graduated from NUML with distinction, so that was nice! 😊 I'm pretty chill but also super focused on results. What do you want to know?`
+            ],
+            
+            // Skills responses
+            skills: [
+                `I'm pretty well-rounded tech-wise! My main focus is AI stuff - prompt engineering, chatbot development, working with OpenAI APIs and LangChain. I also have strong business strategy skills with 3+ years of sales experience, including strategic sales, client negotiation, and process optimization. On the web dev side, I'm solid with React, Vue.js, and modern CSS frameworks like Tailwind. I also do backend work with Node.js, Django, Flask, plus I'm comfortable with databases and cloud platforms. Always learning new things though!`,
+                
+                `My sweet spot is definitely AI solutions architecture and strategic sales. I've closed 30+ AI-driven solutions and built 40+ web applications. I leverage my sales background to pitch and close high-value client contracts while delivering technical excellence. Love working with React, Vue.js, and creating those smooth user experiences. I'm also big on automation and making processes more efficient, achieving up to 50% cost reductions for clients.`,
+                
+                `Oh man, where do I even start? 😄 I do a lot of things honestly. AI is my main thing - like building chatbots, working with OpenAI, LangChain, all that jazz. But I also do sales and business strategy, which is pretty unique I think? Most devs don't do sales, but I've been doing it for 3+ years. On the coding side, I'm really into React and Vue.js, love Tailwind CSS. Backend stuff too - Node, Django, Flask. Databases, cloud platforms, you name it. I'm always picking up new stuff though, can't help it!`,
+                
+                `Hmm, let me think... I'd say I'm strongest in AI solutions and sales strategy. That combo is pretty rare honestly. I've closed 30+ AI projects and built 40+ web apps, so I've got the technical chops AND the business side. React and Vue.js are my go-to for frontend, and I love making things efficient - like I've helped clients cut costs by 50% through automation. What specific skills are you curious about?`
+            ],
+            
+            // Dynamic project responses
+            projects: {
+                general: [
+                    `My recent favorite is this offline sales tracking app called "Ali's Toy Shop" - built it with Flutter. It's got everything: inventory management, real-time profit calculations, PDF receipts, the works. All stored locally, no internet needed. Really proud of the dark futuristic UI I designed for it.\n\nI've also built some cool AI chatbots for e-commerce that boosted engagement by 35%, and automation tools that cut processing time by 40%. Plus tons of responsive web apps using React and Vue.js. \n\nIf you'd like to see any of these projects in action or discuss potential collaborations, feel free to reach out to me at qasimali20041004@gmail.com or call me at +92-325-8639241.`,
+                    
+                    `I've been working on some really cool stuff lately! Just wrapped up this comprehensive Flutter app for managing toy shop sales - completely offline, beautiful dark UI, generates PDFs, exports to CSV, the whole deal. \n\nI've also built AI chatbots that actually move the needle for businesses, and automation workflows that save companies serious time and money. My portfolio has 40+ web applications and 30+ AI solutions. Each project teaches me something new!\n\nInterested in learning more about any specific project? You can contact me directly at qasimali20041004@gmail.com or +92-325-8639241 to discuss details.`,
+                    
+                    `Let me tell you about some of my standout projects! I recently developed "Ali's Toy Shop" - a complete offline Flutter app that handles everything from inventory tracking to generating professional PDF receipts. The UI has this sleek dark theme that I'm really proud of.\n\nI've also created several AI-powered solutions including chatbots that increased customer engagement by 35% and automation systems that cut business processing time by 40%. My focus is always on building things that solve real problems and deliver measurable results.\n\nWant to dive deeper into any of these? Hit me up at qasimali20041004@gmail.com or +92-325-8639241!`,
+                    
+                    `Oh man, I've got so many projects I'm excited about! 😊 My latest baby is "Ali's Toy Shop" - it's a Flutter app that works completely offline. Like, no internet needed at all. It does inventory, sales tracking, generates PDF receipts, exports data... basically everything a shop owner needs. I spent way too much time on that dark UI theme but it was worth it!\n\nThen there's this AI chatbot I built that boosted customer engagement by 35% - that was pretty satisfying to see. And automation tools that cut processing time by 40%. I've done 40+ web apps and 30+ AI projects total. Each one teaches me something new, you know?\n\nWant to know more about any specific one? Just hit me up!`,
+                    
+                    `So I've been building a lot of stuff lately, and honestly I'm pretty proud of it! 😄 There's this Flutter app I made for toy shops - works offline, has this really cool dark theme, does all the business stuff. Then there are AI chatbots that actually help businesses (35% engagement boost!), automation tools that save time... I've done like 40+ web apps and 30+ AI projects. It's been a journey!\n\nWhat kind of project interests you? I can tell you more details about any of them!`
+                ],
+                detailed: [
+                    `Here's the breakdown of my key projects:\n\n🚀 **Ali's Toy Shop** (Flutter App)\n- Complete offline sales & inventory management\n- Real-time profit calculations & analytics\n- Professional PDF receipt generation\n- CSV data exports for reporting\n- Modern dark UI with smooth animations\n\n🤖 **AI-Powered Commerce Chatbot**\n- Built with OpenAI API & LangChain\n- Acts as a sales agent\n- 35% increase in customer engagement\n- 50% reduction in support queries\n\n⚡ **Logistics Automation Suite**\n- RPA-based automation tool for logistics\n- 40% reduction in processing time\n- Enhanced accuracy\n\nEach project taught me something new and pushed the boundaries of what I thought was possible. Want to see demos or discuss collaboration? Contact me at qasimali20041004@gmail.com!`,
+                    
+                    `I love diving deep into project details! Here are some highlights:\n\n**Technical Deep-Dive:**\n\n🎯 **Flutter Sales App:** Used Hive for local database, implemented custom PDF generation with beautiful templates, created responsive design that works on any screen size. The profit calculation engine processes real-time data and generates insights.\n\n🧠 **AI Chatbots:** Leveraged prompt engineering techniques, implemented context-aware conversations, integrated with e-commerce APIs, and built natural language understanding that actually gets what customers want.\n\n🔧 **Automation Tools:** Designed visual workflow builders, created robust error handling systems, implemented logging and monitoring, and built scalable architectures that handle high-volume processing.\n\nI'm constantly evolving these projects based on user feedback and new tech. Got questions about implementation details? Let's chat at +92-325-8639241!`
+                ],
+                process: [
+                    `My development process is pretty iterative and user-focused:\n\n**Phase 1: Discovery & Planning**\n- Deep dive into user needs and pain points\n- Technical feasibility analysis\n- UI/UX wireframing and prototyping\n\n**Phase 2: Core Development**\n- MVP development with essential features\n- Continuous testing and iteration\n- Performance optimization from day one\n\n**Phase 3: Enhancement & Polish**\n- User feedback integration\n- Advanced features and animations\n- Deployment and monitoring setup\n\nFor "Ali's Toy Shop," I started with basic sales tracking, then added inventory management, then PDF generation, and finally the analytics dashboard. Each iteration was based on real user feedback from local shop owners.\n\nCurious about how I approach specific challenges? Drop me a line at qasimali20041004@gmail.com!`,
+                    
+                    `I'm big on learning from each project and applying those lessons to the next one:\n\n**What I learned from the Flutter app:**\n- Offline-first architecture is challenging but worth it\n- Users love dark themes when done right\n- PDF generation needs to be pixel-perfect\n\n**AI Chatbot insights:**\n- Context is everything in conversational AI\n- Prompt engineering is both art and science\n- Performance optimization is crucial for real-time responses\n\n**Automation project takeaways:**\n- Error handling makes or breaks automation\n- Visual workflow builders improve adoption\n- Monitoring and logging are non-negotiable\n\nEach project builds on the previous ones. I'm currently working on combining AI with Flutter for a smart inventory management system. Want to follow my journey or collaborate? Reach me at +92-325-8639241!`
+                ]
+            },
+            
+            // Contact info
+            contact: [
+                `Best way to reach me is email: qasimali20041004@gmail.com or you can call/text me at +92-325-8639241. I'm based in Lahore, Pakistan. Always happy to chat about projects or opportunities!`,
+                
+                `You can hit me up at qasimali20041004@gmail.com or give me a call at +92-325-8639241. I usually respond pretty quickly! If you want to see my work, I can share my portfolio link too.`,
+                
+                `Oh sure! Email me at qasimali20041004@gmail.com or call/text +92-325-8639241. I'm in Lahore, Pakistan. I try to respond as fast as I can - usually pretty quick unless I'm deep in code mode 😅 Feel free to reach out anytime!`,
+                
+                `Yeah, definitely! My email is qasimali20041004@gmail.com and my number is +92-325-8639241. I'm based in Lahore. I'm usually pretty responsive, so don't hesitate to reach out if you want to chat about anything - projects, opportunities, or just to say hi! 😊`
+            ],
+            
+            // Hobbies
+            hobbies: [
+                `When I'm not coding, I'm usually working on side projects (yeah, I know, coding even in my free time 😅), gaming, or binge-watching anime and series on Netflix. Just finished a really good series actually! I find that gaming and anime actually give me creative ideas for UI/UX designs. What about you?`,
+                
+                `I'm a bit of a project addict - always building something new in my spare time. Love gaming too, helps me unwind. And I'm totally into anime and Netflix series. Currently watching some really good stuff. It's funny how entertainment can inspire tech solutions sometimes!`,
+                
+                `Haha, so when I'm not coding... I'm probably still coding on side projects 😂 But seriously, I love gaming - it's my way to decompress. And I'm a huge anime and Netflix series fan. Like, I'll binge-watch entire seasons in one go if I'm not careful. It's weird but sometimes I get UI/UX ideas from anime aesthetics, you know? What do you do for fun?`,
+                
+                `Oh man, I'm kind of a workaholic but in a fun way? 😄 I'm always building random projects in my free time. But I also game a lot - helps me relax. And I'm super into anime and Netflix shows. Currently watching something really good but I won't spoil it! Sometimes I get design inspiration from the shows I watch, which is pretty cool. Do you watch anything good lately?`
+            ],
+            
+            // Romantic/Personal boundary responses
+            personalBoundary: [
+                `Haha, I appreciate that! But I'm completely committed to my Noor - she's the only one for me. Let's keep things professional and talk about tech stuff instead! 😊`,
+                `That's flattering, but I'm fully devoted to my Noor. She's my everything! How about we chat about my projects or anything tech-related?`,
+                `Thanks, but my heart belongs to Noor completely. I'm just hers! Let's talk about AI, development, or whatever's on your mind instead.`
+            ],
+            
+            // Comprehensive topic responses - Web Development
+            webDevelopment: [
+                `Web development is the process of building websites and web applications that run on the internet. It's divided into two main parts: frontend (what users see and interact with) and backend (server-side logic and databases).\n\nQasim Ali has extensive experience in web development - he's built 40+ responsive web applications using modern technologies. On the frontend, he works with React.js, Vue.js, Angular, HTML5, CSS3, JavaScript (ES6+), Tailwind CSS, and Bootstrap. These frameworks allow him to create interactive, user-friendly interfaces.\n\nFor backend development, Qasim uses Node.js, Express.js, Django, Flask, GraphQL, and RESTful APIs. He's also skilled with databases like MongoDB, MySQL, PostgreSQL, and SQL Server.\n\nHis web development approach focuses on creating responsive, performant applications that solve real business problems. He combines his technical skills with his sales experience to understand client needs and deliver solutions that drive business value.\n\nWant to know more about his specific web development projects or technologies?`,
+                
+                `Web development involves creating websites and web applications. There are three main layers:\n\n1. **Frontend (Client-side)**: The visual part users interact with - built with HTML, CSS, and JavaScript. Modern frameworks like React, Vue.js, and Angular make it easier to build complex interfaces.\n\n2. **Backend (Server-side)**: The logic that runs on servers - handles data processing, authentication, and database operations. Technologies like Node.js, Python (Django/Flask), and various databases.\n\n3. **Full-Stack**: Combining both frontend and backend development.\n\nQasim Ali is a full-stack developer with 3+ years of experience. He's built 40+ web applications using:\n- **Frontend**: React.js, Vue.js, Angular, Tailwind CSS, Bootstrap\n- **Backend**: Node.js, Express.js, Django, Flask\n- **Databases**: MongoDB, MySQL, PostgreSQL, SQL Server\n- **Tools**: Git, Docker, AWS, Azure, Firebase, Vercel, Netlify\n\nHis web apps are responsive, performant, and user-centric. He's achieved 95% client satisfaction through agile methodologies and focuses on creating solutions that solve real business problems.\n\nInterested in learning about his specific web development projects?`,
+                
+                `Web development is creating applications that run in web browsers. It includes everything from simple websites to complex web applications.\n\n**Key Concepts:**\n- **Responsive Design**: Websites that work on all devices (mobile, tablet, desktop)\n- **Performance**: Fast loading times and smooth interactions\n- **User Experience (UX)**: Making interfaces intuitive and user-friendly\n- **Accessibility**: Ensuring websites work for everyone\n\nQasim Ali specializes in modern web development. He's built 40+ web applications with:\n\n**Frontend Skills:**\n- React.js and Vue.js for building interactive UIs\n- Tailwind CSS and Bootstrap for styling\n- JavaScript (ES6+) for functionality\n- Responsive design principles\n\n**Backend Skills:**\n- Node.js and Express.js for server-side logic\n- Django and Flask (Python frameworks)\n- RESTful APIs and GraphQL\n- Database design and management\n\n**Qasim Ali's Approach:**\nHe combines technical expertise with business acumen. His web applications are designed to solve real problems and deliver measurable results. He uses agile methodologies and focuses on user-centric design.\n\nWant details about his web development projects or specific technologies?`
+            ],
+            
+            // Comprehensive topic responses - AI
+            artificialIntelligence: [
+                `Artificial Intelligence (AI) is technology that enables machines to learn, reason, and make decisions like humans. It includes machine learning, natural language processing, computer vision, and more.\n\nQasim Ali is an AI Solutions Architect with deep expertise in AI technologies. He's built 30+ AI-driven solutions that have helped clients reduce operational costs by up to 50%.\n\n**Qasim Ali's AI Expertise:**\n- **OpenAI API**: Building intelligent chatbots and AI applications\n- **LangChain**: Creating advanced AI systems with context awareness\n- **RPA (Robotic Process Automation)**: Automating repetitive business processes\n- **TensorFlow & PyTorch**: Machine learning model development\n- **Prompt Engineering**: Designing effective prompts for AI systems\n\n**Real Results:**\n- Built AI chatbots that increased customer engagement by 35%\n- Created automation tools that reduced processing time by 40%\n- Designed AI systems that improved decision-making efficiency by 30%\n- Helped clients achieve up to 50% cost reductions\n\n**Qasim Ali's Approach:**\nHe bridges the gap between complex AI engineering and business revenue goals. He doesn't just build AI - he ensures it delivers real business value. His AI solutions are practical, scalable, and results-driven.\n\nWant to know more about his specific AI projects or how AI can help your business?`,
+                
+                `AI (Artificial Intelligence) enables computers to perform tasks that typically require human intelligence - like understanding language, recognizing patterns, and making decisions.\n\n**Types of AI:**\n- **Machine Learning**: Systems that learn from data\n- **Natural Language Processing**: Understanding and generating human language\n- **Computer Vision**: Analyzing visual information\n- **Automation**: Automating repetitive tasks\n\nQasim Ali specializes in practical AI applications. He's an AI Solutions Architect who's delivered 30+ AI projects:\n\n**Technologies He Uses:**\n- OpenAI API for intelligent chatbots\n- LangChain for advanced AI systems\n- RPA for process automation\n- TensorFlow & PyTorch for machine learning\n\n**Success Stories:**\n- AI chatbot that boosted customer engagement by 35% and reduced support queries by 50%\n- RPA automation that cut processing time by 40%\n- AI systems that improved efficiency by 30%\n- Solutions that helped clients save up to 50% on costs\n\n**What Makes Qasim Ali Unique:**\nHe combines AI expertise with sales strategy. He understands both the technical side and how to communicate AI value to clients. His AI solutions solve real business problems, not just technical challenges.\n\nInterested in learning about specific AI use cases or his projects?`
+            ],
+            
+            // Question word responses
+            questionWords: [
+                `That's a great question! I'd love to help, but I'm specifically here to chat about Qasim Ali's work, projects, and experience. Want to know about his AI solutions, web development projects, or anything else related to his portfolio?`,
+                `Hmm, interesting question! I'm actually focused on talking about Qasim Ali's professional background - his AI work, web apps, sales experience, that kind of stuff. What would you like to know about his work?`,
+                `That's a thoughtful question! I'm here to discuss Qasim Ali's portfolio and experience. Would you like to know about his projects, skills, or how to get in touch with him?`,
+                `Good question! I'm designed to chat about Qasim Ali's work and experience. Want to hear about his AI solutions, web development, or maybe his background?`,
+                `Interesting! I'm here to talk about Qasim Ali's professional work. What would you like to know - his projects, skills, experience, or how to contact him?`
+            ],
+            
+            // General topic responses
+            generalTopics: [
+                `That's cool! You know, I'm here to chat about Qasim Ali's work and experience. He's done some really interesting stuff with AI and web development. Want to hear about it?`,
+                `Nice! Speaking of that, have you checked out Qasim Ali's projects? He's built some pretty cool AI solutions and web apps. Want to know more?`,
+                `Interesting! You know what's also interesting? Qasim Ali's work in AI and web development. He's got 3+ years of experience and has built 40+ web apps and 30+ AI solutions. Pretty impressive, right?`,
+                `That's neat! I'm actually here to tell you about Qasim Ali's work. He's an AI Solutions Architect with experience in sales strategy too. Want to learn more about what he does?`
+            ],
+            
+            // Default responses for unknown queries - Enhanced with context awareness
+            defaults: [
+                `That's interesting! I'm not sure about that specific thing, but feel free to ask me about my work, projects, or anything tech-related. Or we can just chat!`,
+                `Hmm, not totally sure about that one. Want to know about my AI projects, web development work, or just chat about tech stuff?`,
+                `I might need more context on that! But I'm happy to talk about my experience with AI, development, or whatever's on your mind.`,
+                `Oh, that's a good question! I'm not 100% sure about that specific thing though. But hey, ask me about my projects, AI work, web dev stuff, or just chat about anything! I'm pretty open 😊`,
+                `Hmm, let me think... I'm not entirely sure about that one, sorry! But I'd love to talk about my work, projects, or tech in general. What interests you?`,
+                `That's interesting! I might not have the exact answer for that, but I'm always down to chat about my projects, AI solutions, web development, or really anything else. What's on your mind?`,
+                `Oh wow, that's something I haven't thought about! 😅 I'm more of a tech and projects person. Want to hear about some cool AI solutions I've built or web apps I've created?`,
+                `Haha, that's a new one! I'm not sure I can help with that specifically, but I can definitely tell you about my work in AI, web development, or my projects. What interests you?`,
+                `That's definitely interesting! I'm here to chat about Qasim Ali's work though - his AI solutions, web development projects, sales experience, stuff like that. What would you like to know?`,
+                `Hmm, I don't have much to say about that, but I'd love to talk about my projects! I've built some really cool stuff - AI chatbots, automation tools, web apps. Want to hear about them?`,
+                `That's cool! You know what else is cool? The projects I've worked on! I've built AI solutions that helped clients save up to 50% on costs. Want to know more?`,
+                `Interesting topic! I'm more focused on tech stuff though. I can tell you about my experience with AI, web development, or my projects. What sounds good?`,
+                `Oh, I see! That's not really my area of expertise, but I'm great at talking about AI solutions, web development, and the projects I've built. Want to chat about that instead?`,
+                `That's something I haven't heard before! 😄 I'm here to chat about Qasim Ali's work - his AI solutions, web apps, sales experience. What would you like to know?`,
+                `Haha, that's unique! I'm not sure about that, but I can definitely tell you about my work. I've built 40+ web applications and 30+ AI solutions. Pretty cool, right?`
+            ],
+            
+            farewell: [
+                "Bye! 👋 It was fun chatting with you! Take care and have a great day!",
+                "See you later! 😊 Thanks for the nice conversation. Hope you have an awesome day!",
+                "Alright, catch you later! 🚀 Really enjoyed talking with you. Stay awesome!",
+                "Take care! ✨ It was really nice meeting you. Have a wonderful rest of your day!",
+                "Aww, bye! 👋 It was great talking with you! Feel free to come back anytime if you have questions. Have an amazing day!",
+                "See ya! 😄 Thanks for the chat - really enjoyed it! Take care and hope to talk again soon!",
+                "Alright, gotta go? No worries! It was nice chatting with you. Come back anytime! 👋",
+                "Bye bye! ✨ Thanks for stopping by! If you ever want to chat again, I'll be here. Have a great one!"
+            ]
+        };
+        
+        // Create chatbot elements
+        function createChatbot() {
+            // Create chat icon
+            const chatIcon = document.createElement('div');
+            chatIcon.className = 'chat-icon';
+            chatIcon.innerHTML = '<i class="fas fa-comment-dots"></i>';
+            document.body.appendChild(chatIcon);
+            
+            // Create chat window
+            const chatWindow = document.createElement('div');
+            chatWindow.className = 'chat-window';
+            chatWindow.innerHTML = `
+                <div class="chat-header">
+                    <h3>Chat with Qasim Ali's Assistant</h3>
+                    <button class="chat-close"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="chat-messages"></div>
+                <div class="chat-input-container">
+                    <input type="text" class="chat-input" placeholder="Type your message...">
+                    <button class="chat-send"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            `;
+            document.body.appendChild(chatWindow);
+            
+            // Add event listeners
+            chatIcon.addEventListener('click', () => {
+                chatWindow.classList.toggle('active');
+                chatIcon.classList.toggle('active');
+                
+                // If opening the chat for the first time, show greeting
+                const chatMessages = document.querySelector('.chat-messages');
+                if (chatMessages.children.length === 0) {
+                    const randomGreeting = responses.greetings[Math.floor(Math.random() * responses.greetings.length)];
+                    addBotMessage(randomGreeting);
+                }
+            });
+            
+            document.querySelector('.chat-close').addEventListener('click', () => {
+                chatWindow.classList.remove('active');
+                chatIcon.classList.remove('active');
+            });
+            
+            const chatInput = document.querySelector('.chat-input');
+            const chatSend = document.querySelector('.chat-send');
+            
+            function sendMessage() {
+                const message = chatInput.value.trim();
+                if (message) {
+                    addUserMessage(message);
+                    chatInput.value = '';
+                    setTimeout(() => processUserMessage(message), 500 + Math.random() * 1000);
+                }
+            }
+            
+            chatSend.addEventListener('click', sendMessage);
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+        }
+        
+        function addUserMessage(message) {
+            const chatMessages = document.querySelector('.chat-messages');
+            const messageElement = document.createElement('div');
+            messageElement.className = 'chat-message user-message';
+            messageElement.textContent = message;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function addBotMessage(message) {
+            const chatMessages = document.querySelector('.chat-messages');
+            
+            // Add typing indicator
+            const typingIndicator = document.createElement('div');
+            typingIndicator.className = 'chat-message bot-message typing-indicator';
+            typingIndicator.innerHTML = '<span></span><span></span><span></span>';
+            chatMessages.appendChild(typingIndicator);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            // Simulate typing delay based on message length
+            const typingDelay = Math.min(1500, message.length * 30);
+            
+            setTimeout(() => {
+                // Remove typing indicator
+                chatMessages.removeChild(typingIndicator);
+                
+                // Add actual message
+                const messageElement = document.createElement('div');
+                messageElement.className = 'chat-message bot-message';
+                messageElement.textContent = message;
+                chatMessages.appendChild(messageElement);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, typingDelay);
+        }
+        
+        function processUserMessage(message) {
+            const originalMessage = message;
+            message = message.toLowerCase().trim();
+            
+            // Handle empty or very short inputs
+            if (message.length === 0) {
+                addBotMessage("Hey! I'm here! 😊 What would you like to know?");
+                return;
+            }
+            
+            // Handle single character inputs
+            if (message.length === 1) {
+                const singleCharResponses = [
+                    "That's a single character! 😄 Want to chat? I can tell you about my work, projects, or experience!",
+                    "Just one letter? Haha, interesting! What would you like to know about my work?",
+                    "That's short! 😊 Want to know about my AI projects or web development work?",
+                    "One character? Cool! I'm here to chat about Qasim Ali's work. What interests you?"
+                ];
+                const randomResponse = singleCharResponses[Math.floor(Math.random() * singleCharResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle emojis only or messages with lots of emojis
+            if (message.match(/^[\u{1F300}-\u{1F9FF}\s]+$/u) || (message.match(/[\u{1F300}-\u{1F9FF}]/gu) && message.match(/[\u{1F300}-\u{1F9FF}]/gu).length > 3)) {
+                const emojiResponses = [
+                    "I see emojis! 😊 That's fun! Want to chat about my work or projects?",
+                    "Love the emojis! 😄 What would you like to know about my work?",
+                    "Emojis are cool! 😎 Want to hear about my AI solutions or web development projects?",
+                    "Nice emojis! Want to chat about my work? I've got lots to share!"
+                ];
+                const randomResponse = emojiResponses[Math.floor(Math.random() * emojiResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle special characters only or mostly special characters
+            if (message.match(/^[^a-zA-Z0-9\s]+$/) || (message.match(/[^a-zA-Z0-9\s]/g) && message.match(/[^a-zA-Z0-9\s]/g).length > message.length / 2)) {
+                const specialCharResponses = [
+                    "I see some special characters there! 😄 Want to chat about my work? I can tell you about my projects!",
+                    "Interesting characters! What would you like to know about my work or projects?",
+                    "That's unique! Want to hear about my AI solutions or web development work?",
+                    "Cool symbols! I'm here to chat about Qasim Ali's work. What interests you?"
+                ];
+                const randomResponse = specialCharResponses[Math.floor(Math.random() * specialCharResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle "how are you" questions
+            if (message.includes('how are you') || message.includes('how r u') || message.includes('how ru') ||
+                message.includes('how\'s it going') || message.includes('hows it going') ||
+                message.includes('how you doing') || message.includes('how are things')) {
+                const howAreYouResponses = [
+                    "I'm fine, Alhumdulillah! What about you? 😊",
+                    "Doing great, Alhumdulillah! How are you doing?",
+                    "I'm good, Alhumdulillah! How's everything with you?",
+                    "All good here, Alhumdulillah! What's up with you?",
+                    "Pretty good, Alhumdulillah! Just working on some projects. How about you? 😊",
+                    "Doing well, Alhumdulillah! Thanks for asking! How's your day going?",
+                    "I'm doing great, Alhumdulillah! What's going on with you?",
+                    "All good, Alhumdulillah! Just here chatting with you. How are things on your end?"
+                ];
+                const randomResponse = howAreYouResponses[Math.floor(Math.random() * howAreYouResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle responses when user says they're fine too
+            if ((message.includes('fine') && (message.includes('too') || message.includes('also'))) ||
+                (message.includes('fine') && message.includes('alhumdulillah')) ||
+                (message.includes('good') && (message.includes('too') || message.includes('also'))) ||
+                (message.includes('great') && (message.includes('too') || message.includes('also'))) ||
+                message.includes("i'm fine") || message.includes("im fine") ||
+                message.includes("i'm good") || message.includes("im good") ||
+                message.includes("i'm great") || message.includes("im great") ||
+                message.includes("doing well") || message.includes("doing fine") ||
+                message.includes("all good")) {
+                const happyResponses = [
+                    "I'm happy to hear that! 😊 Wanna talk about something specific?",
+                    "That's perfect! What would you like to chat about?",
+                    "Glad to hear you're doing well! Is there anything you'd like to discuss?",
+                    "That's great to hear! What's on your mind today?",
+                    "Awesome! So, what brings you here? Anything you'd like to know about?",
+                    "That's wonderful! What would you like to talk about?",
+                    "Nice! That's good to hear 😊 So what can I help you with today?",
+                    "Oh that's awesome! Alhumdulillah! What would you like to know about?",
+                    "Great! I'm glad you're doing well. What brings you here? Anything specific you want to chat about?"
+                ];
+                const randomResponse = happyResponses[Math.floor(Math.random() * happyResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle greetings
+            if (message.includes('hi') || message.includes('hello') || message.includes('hey') || 
+                message.includes('what\'s up') || message.includes('whats up') || message.includes('sup') ||
+                message.includes('good morning') || message.includes('good afternoon') || message.includes('good evening')) {
+                const randomResponse = responses.greetings[Math.floor(Math.random() * responses.greetings.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle goodbye messages
+            if (message.includes('bye') || message.includes('goodbye') || message.includes('see you') ||
+                message.includes('later') || message.includes('gtg') || message.includes('gotta go') ||
+                message.includes('have a good') || message.includes('take care')) {
+                const randomFarewell = responses.farewell[Math.floor(Math.random() * responses.farewell.length)];
+                addBotMessage(randomFarewell);
+                return;
+            }
+            
+            // Handle project queries with dynamic responses (check this BEFORE aboutMe to avoid conflicts)
+            if (message.includes('project') || message.includes('projects') || message.includes('work') || message.includes('portfolio') ||
+                message.includes('built') || message.includes('created') || message.includes('developed') ||
+                message.includes('app') || message.includes('website') || message.includes('application')) {
+                
+                let responseArray;
+                
+                // Determine response type based on keywords
+                if (message.includes('detail') || message.includes('deep') || message.includes('breakdown') || 
+                    message.includes('technical') || message.includes('specific') || message.includes('more about')) {
+                    responseArray = responses.projects.detailed;
+                } else if (message.includes('process') || message.includes('how') || message.includes('approach') || 
+                           message.includes('method') || message.includes('workflow') || message.includes('learn')) {
+                    responseArray = responses.projects.process;
+                } else {
+                    responseArray = responses.projects.general;
+                }
+                
+                const randomResponse = responseArray[Math.floor(Math.random() * responseArray.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle skills queries
+            if (message.includes('skill') || message.includes('technology') || message.includes('technologies') ||
+                message.includes('programming') || message.includes('languages') || message.includes('framework') ||
+                message.includes('what can you do') || message.includes('expertise') || message.includes('experience')) {
+                const randomResponse = responses.skills[Math.floor(Math.random() * responses.skills.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle "about me" or "tell me about yourself" queries (check this AFTER projects)
+            if ((message.includes('about') && (message.includes('you') || message.includes('yourself'))) ||
+                message.includes('tell me about you') || message.includes('who are you') || 
+                message.includes('introduce yourself') || message.includes('what do you do')) {
+                const randomResponse = responses.aboutMe[Math.floor(Math.random() * responses.aboutMe.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle contact queries
+            if (message.includes('contact') || message.includes('reach') || message.includes('email') ||
+                message.includes('phone') || message.includes('call') || message.includes('hire') ||
+                message.includes('collaborate') || message.includes('work together') || message.includes('get in touch')) {
+                const randomResponse = responses.contact[Math.floor(Math.random() * responses.contact.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle hobbies/interests queries
+            if (message.includes('hobby') || message.includes('hobbies') || message.includes('interest') ||
+                message.includes('free time') || message.includes('fun') || message.includes('games') ||
+                message.includes('anime') || message.includes('netflix') || message.includes('outside work')) {
+                const randomResponse = responses.hobbies[Math.floor(Math.random() * responses.hobbies.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle romantic/flirty messages
+            if (message.includes('love') || message.includes('beautiful') || message.includes('sexy') ||
+                message.includes('cute') || message.includes('handsome') || message.includes('marry') ||
+                message.includes('date') || message.includes('girlfriend') || message.includes('boyfriend') ||
+                message.includes('kiss') || message.includes('relationship') || (message.includes('like') && message.includes('you'))) {
+                const randomResponse = responses.personalBoundary[Math.floor(Math.random() * responses.personalBoundary.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle question words (what, why, how, when, where, who, which)
+            if (message.startsWith('what') || message.startsWith('why') || message.startsWith('how') ||
+                message.startsWith('when') || message.startsWith('where') || message.startsWith('who') ||
+                message.startsWith('which') || message.includes('?') || message.includes('explain') ||
+                message.includes('tell me') || message.includes('describe')) {
+                const randomResponse = responses.questionWords[Math.floor(Math.random() * responses.questionWords.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle common words and topics - Technology related
+            if (message.includes('tech') || message.includes('technology') || message.includes('computer') ||
+                message.includes('software') || message.includes('code') || message.includes('coding') ||
+                message.includes('programming') || message.includes('developer') || message.includes('engineer') ||
+                message.includes('internet') || message.includes('website') || message.includes('online') ||
+                message.includes('digital') || message.includes('app') || message.includes('application')) {
+                const techResponses = [
+                    `Technology is the application of scientific knowledge to solve problems and create tools. It includes hardware, software, networks, and systems.\n\nQasim Ali works extensively with technology - specifically AI solutions, web development, and automation. He's built 40+ web applications and 30+ AI solutions using modern technologies.\n\n**Qasim Ali's Tech Stack:**\n- **Frontend**: React.js, Vue.js, Angular, Tailwind CSS\n- **Backend**: Node.js, Express.js, Django, Flask\n- **AI**: OpenAI API, LangChain, RPA, TensorFlow, PyTorch\n- **Cloud**: AWS, Azure, Firebase, Vercel, Netlify\n- **Tools**: Git, Docker, Figma, Adobe XD\n\nHe combines technical expertise with business strategy to deliver solutions that drive real value. Want to know more about his technology experience?`,
+                    `Tech is my jam! 😊 Qasim Ali has been working with AI solutions, building web apps, and doing automation for years. He's got 3+ years of experience and has delivered 40+ web applications and 30+ AI solutions.\n\n**What Qasim Ali Does:**\n- Builds responsive web applications using modern frameworks\n- Creates AI solutions that solve business problems\n- Automates processes to save time and money\n- Combines technical skills with sales strategy\n\n**Results:**\n- 95% client satisfaction rate\n- Up to 50% cost reductions for clients\n- 35% increase in customer engagement\n- 40% reduction in processing time\n\nWant to know more about his specific technology projects?`
+                ];
+                const randomResponse = techResponses[Math.floor(Math.random() * techResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle AI/Machine Learning related - Comprehensive responses
+            if (message.includes('ai') || message.includes('artificial intelligence') || message.includes('machine learning') ||
+                message.includes('ml') || message.includes('chatbot') || message.includes('automation') ||
+                message.includes('neural') || message.includes('deep learning') || message.includes('openai') ||
+                message.includes('langchain') || message.includes('rpa') || message.includes('robot')) {
+                const randomResponse = responses.artificialIntelligence[Math.floor(Math.random() * responses.artificialIntelligence.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle business/sales related
+            if (message.includes('business') || message.includes('sales') || message.includes('client') ||
+                message.includes('customer') || message.includes('revenue') || message.includes('profit') ||
+                message.includes('strategy') || message.includes('marketing') || message.includes('negotiation') ||
+                message.includes('deal') || message.includes('contract') || message.includes('pitch')) {
+                const businessResponses = [
+                    `Business and sales! I have 3+ years of sales experience and I've closed 30+ AI-driven solutions. I combine technical skills with business strategy. Want to know more?`,
+                    `Oh, business stuff! I'm both a technical person and a sales strategist. I've helped clients reduce costs by up to 50%. Pretty cool, right?`,
+                    `Business is important! I leverage my sales background to pitch and close high-value contracts while delivering technical solutions. What interests you?`,
+                    `Sales and business strategy! I've used my sales experience to close 30+ AI projects. Want to hear about how I combine tech and sales?`
+                ];
+                const randomResponse = businessResponses[Math.floor(Math.random() * businessResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle education/learning related
+            if (message.includes('learn') || message.includes('education') || message.includes('study') ||
+                message.includes('school') || message.includes('university') || message.includes('college') ||
+                message.includes('degree') || message.includes('course') || message.includes('training') ||
+                message.includes('teach') || message.includes('instructor') || message.includes('student')) {
+                const eduResponses = [
+                    `Education is important! I graduated from NUML University with a CS degree with Distinction. I also teach AI and web development. Want to know more?`,
+                    `Oh, learning stuff! I'm a technical instructor and I've conducted 50+ training sessions. I also graduated with distinction. What would you like to know?`,
+                    `Education matters! I have a CS degree and I teach others about AI and development. I've helped 90% of my students get placements. Pretty cool!`,
+                    `Learning is great! I graduated with distinction and now I teach AI and web development. Want to hear about my teaching experience?`
+                ];
+                const randomResponse = eduResponses[Math.floor(Math.random() * eduResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle job/career related
+            if (message.includes('job') || message.includes('career') || message.includes('work') ||
+                message.includes('employment') || message.includes('position') || message.includes('hire') ||
+                message.includes('recruit') || message.includes('opportunity') || message.includes('vacancy') ||
+                message.includes('opening') || message.includes('role') || message.includes('position')) {
+                const jobResponses = [
+                    `Job opportunities? I'm currently freelancing as an AI Solutions Architect and Sales Strategist. I'm open to new opportunities! Want to know more about my experience?`,
+                    `Career stuff! I'm a freelancer doing AI solutions and web development. I've got 3+ years of experience. Interested in working together?`,
+                    `Work opportunities? I'm available for freelance projects in AI and web development. I've closed 30+ projects. Want to discuss?`,
+                    `Job related? I'm an AI Solutions Architect available for projects. I've built 40+ web apps and 30+ AI solutions. Want to chat about opportunities?`
+                ];
+                const randomResponse = jobResponses[Math.floor(Math.random() * jobResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle positive emotions/reactions
+            if (message.includes('cool') || message.includes('awesome') || message.includes('great') ||
+                message.includes('amazing') || message.includes('nice') || message.includes('wow') ||
+                message.includes('impressive') || message.includes('fantastic') || message.includes('excellent') ||
+                message.includes('wonderful') || message.includes('brilliant') || message.includes('perfect')) {
+                const positiveResponses = [
+                    `Thanks! 😊 I'm glad you think so! Want to know more about my work or projects?`,
+                    `Aww, thanks! That's nice of you to say! What would you like to know about my work?`,
+                    `Thank you! 😄 I appreciate that! Want to hear about my projects or experience?`,
+                    `That's sweet of you! Want to chat about my AI solutions or web development work?`
+                ];
+                const randomResponse = positiveResponses[Math.floor(Math.random() * positiveResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle negative emotions/reactions
+            if (message.includes('bad') || message.includes('sad') || message.includes('angry') ||
+                message.includes('hate') || message.includes('terrible') || message.includes('awful') ||
+                message.includes('disappoint') || message.includes('worst') || message.includes('horrible')) {
+                const negativeResponses = [
+                    `Oh no, sorry to hear that! 😔 Is there anything I can help with? Maybe we can chat about something more positive - like my projects or work?`,
+                    `That's tough! I'm here if you want to chat. Or we could talk about something lighter - like my AI projects or web development work?`,
+                    `I'm sorry you're feeling that way. Want to talk about something else? I can tell you about my work or projects if that helps!`,
+                    `That sounds difficult. I'm here to chat! Maybe we could talk about something more positive? I've got some cool projects I could share!`
+                ];
+                const randomResponse = negativeResponses[Math.floor(Math.random() * negativeResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle common words - Yes/No/Maybe
+            if (message === 'yes' || message === 'yeah' || message === 'yep' || message === 'yup' ||
+                message === 'sure' || message === 'ok' || message === 'okay' || message === 'alright' ||
+                message === 'no' || message === 'nope' || message === 'nah' || message === 'maybe' ||
+                message === 'perhaps' || message === 'probably') {
+                const yesNoResponses = [
+                    `Great! What would you like to know? I can tell you about my projects, skills, experience, or how to get in touch!`,
+                    `Awesome! What interests you - my AI work, web development projects, or something else?`,
+                    `Perfect! What would you like to chat about? I've got lots to share about my work!`,
+                    `Cool! What can I help you with? Want to know about my projects, skills, or experience?`
+                ];
+                const randomResponse = yesNoResponses[Math.floor(Math.random() * yesNoResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle common words - Thanks/Thank you
+            if (message.includes('thank') || message.includes('thanks') || message.includes('thx') ||
+                message.includes('appreciate') || message.includes('grateful')) {
+                const thanksResponses = [
+                    `You're welcome! 😊 Is there anything else you'd like to know about my work or projects?`,
+                    `No problem! Happy to help! Want to know more about anything?`,
+                    `Anytime! 😄 Feel free to ask me anything about my work, projects, or experience!`,
+                    `You're very welcome! What else can I help you with?`
+                ];
+                const randomResponse = thanksResponses[Math.floor(Math.random() * thanksResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle common words - Sorry/Apology
+            if (message.includes('sorry') || message.includes('apologize') || message.includes('apology') ||
+                message.includes('excuse') || message.includes('pardon')) {
+                const sorryResponses = [
+                    `No worries at all! 😊 Is there anything I can help you with? Want to know about my work or projects?`,
+                    `Don't worry about it! What would you like to chat about? I can tell you about my work!`,
+                    `It's all good! 😄 Want to know about my AI solutions or web development projects?`,
+                    `No problem! What can I help you with? I've got lots to share about my work!`
+                ];
+                const randomResponse = sorryResponses[Math.floor(Math.random() * sorryResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle common words - Name/Who
+            if (message.includes('name') || message.includes('called') || message.includes('who are') ||
+                message.includes('your name') || message.includes('what are you')) {
+                const nameResponses = [
+                    `I'm Qasim Ali's AI assistant! 😊 I'm here to chat about his work, projects, and experience. What would you like to know?`,
+                    `I'm the chatbot representing Qasim Ali! I can tell you about his AI solutions, web development work, and more. What interests you?`,
+                    `I'm Qasim Ali's assistant! I'm here to help you learn about his work. Want to know about his projects or experience?`,
+                    `I'm here representing Qasim Ali! I can share info about his work, projects, skills, and how to contact him. What do you want to know?`
+                ];
+                const randomResponse = nameResponses[Math.floor(Math.random() * nameResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle location/where questions
+            if (message.includes('where') || message.includes('location') || message.includes('from') ||
+                message.includes('live') || message.includes('based') || message.includes('address')) {
+                const locationResponses = [
+                    `Qasim is based in Lahore, Pakistan! 🇵🇰 Want to know more about his work or how to contact him?`,
+                    `He's from Lahore, Pakistan! Want to know about his projects, skills, or experience?`,
+                    `Lahore, Pakistan is where he's based! What would you like to know about his work?`,
+                    `He's located in Lahore, Pakistan! Want to hear about his AI solutions or web development projects?`
+                ];
+                const randomResponse = locationResponses[Math.floor(Math.random() * locationResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle age/time related
+            if (message.includes('age') || message.includes('old') || message.includes('young') ||
+                message.includes('year') || message.includes('time') || message.includes('when')) {
+                const timeResponses = [
+                    `Time-related question! I've been working in AI and web development for 3+ years. Want to know more about my experience?`,
+                    `Interesting! I have 3+ years of sales experience and have been doing AI/web dev work for a while. What would you like to know?`,
+                    `Time stuff! I've been building projects for years - 40+ web apps and 30+ AI solutions. Want details?`,
+                    `That's time-related! I've got 3+ years of experience. Want to hear about my journey or projects?`
+                ];
+                const randomResponse = timeResponses[Math.floor(Math.random() * timeResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle random words - catch anything with common English words
+            const commonWords = ['the', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 
+                'do', 'does', 'did', 'will', 'would', 'should', 'could', 'may', 'might', 'must', 'can', 'cannot',
+                'this', 'that', 'these', 'those', 'a', 'an', 'and', 'or', 'but', 'if', 'then', 'else', 'so',
+                'with', 'without', 'from', 'to', 'for', 'of', 'in', 'on', 'at', 'by', 'about', 'into', 'onto'];
+            
+            // If message contains mostly common words without specific meaning, give general response
+            const words = message.split(' ').filter(w => w.length > 0);
+            const commonWordCount = words.filter(w => commonWords.includes(w.toLowerCase())).length;
+            if (words.length > 0 && commonWordCount / words.length > 0.6 && words.length <= 5) {
+                const generalResponses = [
+                    `I see! What would you like to know about my work? I can tell you about projects, skills, or experience!`,
+                    `Got it! Want to chat about my AI solutions, web development work, or something else?`,
+                    `Interesting! What can I help you with? I know about projects, skills, experience, and more!`,
+                    `I understand! What would you like to know about Qasim Ali's work or projects?`
+                ];
+                const randomResponse = generalResponses[Math.floor(Math.random() * generalResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle common words - Help
+            if (message.includes('help') || message.includes('assist') || message.includes('support')) {
+                const helpResponses = [
+                    `I'm here to help! 😊 I can tell you about Qasim Ali's work, projects, skills, experience, or how to contact him. What would you like to know?`,
+                    `Sure, I can help! I know about Qasim Ali's AI solutions, web development projects, sales experience, and more. What interests you?`,
+                    `Happy to help! Ask me about projects, skills, experience, or anything related to Qasim Ali's work. What can I tell you?`,
+                    `I'm here for you! I can share info about Qasim Ali's work, projects, background, or contact details. What do you want to know?`
+                ];
+                const randomResponse = helpResponses[Math.floor(Math.random() * helpResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle numbers (could be asking about stats)
+            if (/^\d+$/.test(message) || message.match(/\d+/)) {
+                const numberResponses = [
+                    `That's a number! 😄 Are you asking about stats? I've built 40+ web apps and 30+ AI solutions. Want to know more?`,
+                    `Interesting number! Speaking of numbers, I've closed 30+ AI projects and built 40+ web applications. Pretty cool, right?`,
+                    `That's a number! I've got some impressive stats too - 40+ web apps, 30+ AI solutions, 3+ years of experience. Want details?`
+                ];
+                const randomResponse = numberResponses[Math.floor(Math.random() * numberResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle single words or very short messages
+            if (message.split(' ').length <= 2 && message.length < 15) {
+                const shortResponses = [
+                    `That's interesting! Want to know more about my work? I can tell you about my projects, skills, or experience!`,
+                    `Cool! What would you like to know? I've got lots to share about my AI work and web development projects!`,
+                    `Nice! Want to chat about my work? I can tell you about my projects, experience, or how to get in touch!`,
+                    `Interesting! What can I help you with? I know about projects, skills, experience, and more!`
+                ];
+                const randomResponse = shortResponses[Math.floor(Math.random() * shortResponses.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Handle general topics - redirect to Qasim Ali's work
+            const generalTopicKeywords = ['think', 'opinion', 'believe', 'feel', 'know', 'understand', 
+                'interesting', 'cool', 'nice', 'good', 'bad', 'like', 'dislike', 'prefer', 'favorite', 
+                'best', 'worst', 'important', 'matter', 'care', 'worry', 'hope', 'want', 'need', 
+                'should', 'could', 'would', 'might', 'maybe', 'probably', 'definitely', 'absolutely'];
+            
+            if (generalTopicKeywords.some(keyword => message.includes(keyword))) {
+                const randomResponse = responses.generalTopics[Math.floor(Math.random() * responses.generalTopics.length)];
+                addBotMessage(randomResponse);
+                return;
+            }
+            
+            // Default response for anything else - Enhanced with more variety
+            const randomResponse = responses.defaults[Math.floor(Math.random() * responses.defaults.length)];
+            addBotMessage(randomResponse);
+        }
+        
+        // Initialize chatbot
+        createChatbot();
+        
+        // Make the chat-prompt clickable to open the chatbot
+        document.querySelector('.chat-prompt').addEventListener('click', () => {
+            const chatWindow = document.querySelector('.chat-window');
+            const chatIcon = document.querySelector('.chat-icon');
+            
+            chatWindow.classList.add('active');
+            chatIcon.classList.add('active');
+            
+            // If opening the chat for the first time, show greeting
+            const chatMessages = document.querySelector('.chat-messages');
+            if (chatMessages.children.length === 0) {
+                const randomGreeting = responses.greetings[Math.floor(Math.random() * responses.greetings.length)];
+                addBotMessage(randomGreeting);
+            }
+        });
+    </script>
+    
+    <!-- Visitor Tracking System -->
+    <script>
+        // Visitor Tracking System
+        (function() {
+            'use strict';
+            
+            // Configuration
+            const TRACKING_CONFIG = {
+                storageKey: 'portfolio_visitors',
+                adminKey: 'qasim2024', // Change this to your secret admin key
+                enableIPLookup: true,
+                enableLocation: true
+            };
+            
+            // Collect visitor information
+            function collectVisitorData() {
+                const visitorData = {
+                    timestamp: new Date().toISOString(),
+                    userAgent: navigator.userAgent,
+                    language: navigator.language,
+                    platform: navigator.platform,
+                    screenWidth: window.screen.width,
+                    screenHeight: window.screen.height,
+                    viewportWidth: window.innerWidth,
+                    viewportHeight: window.innerHeight,
+                    referrer: document.referrer || 'Direct',
+                    url: window.location.href,
+                    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                    cookieEnabled: navigator.cookieEnabled,
+                    online: navigator.onLine,
+                    // Device detection
+                    isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
+                    isTablet: /iPad|Android/i.test(navigator.userAgent) && !/Mobile/i.test(navigator.userAgent),
+                    // Browser detection
+                    browser: getBrowser(),
+                    os: getOS()
+                };
+                
+                return visitorData;
+            }
+            
+            // Get browser name
+            function getBrowser() {
+                const ua = navigator.userAgent;
+                if (ua.includes('Chrome') && !ua.includes('Edg')) return 'Chrome';
+                if (ua.includes('Firefox')) return 'Firefox';
+                if (ua.includes('Safari') && !ua.includes('Chrome')) return 'Safari';
+                if (ua.includes('Edg')) return 'Edge';
+                if (ua.includes('Opera') || ua.includes('OPR')) return 'Opera';
+                return 'Unknown';
+            }
+            
+            // Get OS name
+            function getOS() {
+                const ua = navigator.userAgent;
+                if (ua.includes('Windows')) return 'Windows';
+                if (ua.includes('Mac')) return 'macOS';
+                if (ua.includes('Linux')) return 'Linux';
+                if (ua.includes('Android')) return 'Android';
+                if (ua.includes('iOS') || ua.includes('iPhone') || ua.includes('iPad')) return 'iOS';
+                return 'Unknown';
+            }
+            
+            // Get IP and location (using free API)
+            async function getIPAndLocation() {
+                try {
+                    const response = await fetch('https://api.ipify.org?format=json');
+                    const data = await response.json();
+                    const ip = data.ip;
+                    
+                    if (TRACKING_CONFIG.enableLocation) {
+                        try {
+                            const locResponse = await fetch(`https://ipapi.co/${ip}/json/`);
+                            const locData = await locResponse.json();
+                            return {
+                                ip: ip,
+                                city: locData.city || 'Unknown',
+                                region: locData.region || 'Unknown',
+                                country: locData.country_name || 'Unknown',
+                                countryCode: locData.country_code || 'Unknown',
+                                timezone: locData.timezone || 'Unknown',
+                                isp: locData.org || 'Unknown'
+                            };
+                        } catch (e) {
+                            return { ip: ip, location: 'Unable to fetch' };
+                        }
+                    }
+                    return { ip: ip };
+                } catch (e) {
+                    return { ip: 'Unable to fetch' };
+                }
+            }
+            
+            // Store visitor data
+            function storeVisitorData(visitorData) {
+                try {
+                    let visitors = JSON.parse(localStorage.getItem(TRACKING_CONFIG.storageKey) || '[]');
+                    
+                    // Add unique ID to prevent exact duplicates
+                    visitorData.id = Date.now() + Math.random();
+                    
+                    visitors.push(visitorData);
+                    
+                    // Keep only last 1000 visitors to prevent storage bloat
+                    if (visitors.length > 1000) {
+                        visitors = visitors.slice(-1000);
+                    }
+                    
+                    localStorage.setItem(TRACKING_CONFIG.storageKey, JSON.stringify(visitors));
+                    
+                    // Update view count
+                    updateViewCount();
+                    
+                    return true;
+                } catch (e) {
+                    console.error('Error storing visitor data:', e);
+                    return false;
+                }
+            }
+            
+            // Get view count
+            function getViewCount() {
+                try {
+                    const visitors = JSON.parse(localStorage.getItem(TRACKING_CONFIG.storageKey) || '[]');
+                    return visitors.length;
+                } catch (e) {
+                    return 0;
+                }
+            }
+            
+            // Update view count display
+            function updateViewCount() {
+                const count = getViewCount();
+                const viewCountElement = document.getElementById('view-count');
+                if (viewCountElement) {
+                    viewCountElement.textContent = count.toLocaleString();
+                }
+            }
+            
+            // Display view count in footer (optional)
+            function addViewCountToFooter() {
+                const footer = document.querySelector('footer .container');
+                if (footer) {
+                    const viewCountDiv = document.createElement('div');
+                    viewCountDiv.style.cssText = 'text-align: center; margin-top: 15px; font-size: 0.9rem; color: var(--muted-color);';
+                    viewCountDiv.innerHTML = `<i class="fas fa-eye"></i> Total Views: <span id="view-count">${getViewCount().toLocaleString()}</span>`;
+                    footer.appendChild(viewCountDiv);
+                }
+            }
+            
+            // Admin panel to view visitor data
+            function createAdminPanel() {
+                const adminPanel = document.createElement('div');
+                adminPanel.id = 'admin-panel';
+                adminPanel.style.cssText = `
+                    display: none;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.9);
+                    z-index: 10000;
+                    overflow-y: auto;
+                    padding: 20px;
+                    color: white;
+                `;
+                
+                adminPanel.innerHTML = `
+                    <div style="max-width: 1200px; margin: 0 auto;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h2 style="color: var(--accent-color);">Visitor Analytics Dashboard</h2>
+                            <button id="close-admin" style="padding: 10px 20px; background: #ff4444; color: white; border: none; border-radius: 5px; cursor: pointer;">Close</button>
+                        </div>
+                        <div id="admin-stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px;">
+                            <!-- Stats will be inserted here -->
+                        </div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                            <h3 style="margin-bottom: 15px;">Export Data</h3>
+                            <button id="export-csv" style="padding: 10px 20px; background: var(--accent-color); color: white; border: none; border-radius: 5px; cursor: pointer; margin-right: 10px;">Export as CSV</button>
+                            <button id="export-json" style="padding: 10px 20px; background: var(--accent-secondary); color: white; border: none; border-radius: 5px; cursor: pointer;">Export as JSON</button>
+                            <button id="clear-data" style="padding: 10px 20px; background: #ff4444; color: white; border: none; border-radius: 5px; cursor: pointer; margin-left: 10px;">Clear All Data</button>
+                        </div>
+                        <div id="visitor-list" style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+                            <h3 style="margin-bottom: 15px;">Recent Visitors</h3>
+                            <div id="visitor-table"></div>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(adminPanel);
+                
+                // Event listeners
+                document.getElementById('close-admin').addEventListener('click', () => {
+                    adminPanel.style.display = 'none';
+                });
+                
+                document.getElementById('export-csv').addEventListener('click', exportToCSV);
+                document.getElementById('export-json').addEventListener('click', exportToJSON);
+                document.getElementById('clear-data').addEventListener('click', clearAllData);
+            }
+            
+            // Show admin panel
+            function showAdminPanel() {
+                const panel = document.getElementById('admin-panel');
+                if (panel) {
+                    panel.style.display = 'block';
+                    loadAdminData();
+                }
+            }
+            
+            // Load admin data
+            function loadAdminData() {
+                try {
+                    const visitors = JSON.parse(localStorage.getItem(TRACKING_CONFIG.storageKey) || '[]');
+                    
+                    // Calculate stats
+                    const stats = {
+                        totalViews: visitors.length,
+                        uniqueIPs: new Set(visitors.map(v => v.ip || 'Unknown')).size,
+                        countries: {},
+                        browsers: {},
+                        devices: {},
+                        referrers: {}
+                    };
+                    
+                    visitors.forEach(visitor => {
+                        // Countries
+                        const country = visitor.country || 'Unknown';
+                        stats.countries[country] = (stats.countries[country] || 0) + 1;
+                        
+                        // Browsers
+                        const browser = visitor.browser || 'Unknown';
+                        stats.browsers[browser] = (stats.browsers[browser] || 0) + 1;
+                        
+                        // Devices
+                        const device = visitor.isMobile ? 'Mobile' : visitor.isTablet ? 'Tablet' : 'Desktop';
+                        stats.devices[device] = (stats.devices[device] || 0) + 1;
+                        
+                        // Referrers
+                        const ref = visitor.referrer === 'Direct' ? 'Direct' : new URL(visitor.referrer).hostname;
+                        stats.referrers[ref] = (stats.referrers[ref] || 0) + 1;
+                    });
+                    
+                    // Display stats
+                    const statsDiv = document.getElementById('admin-stats');
+                    statsDiv.innerHTML = `
+                        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                            <div style="font-size: 2rem; color: var(--accent-color); font-weight: bold;">${stats.totalViews}</div>
+                            <div>Total Views</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                            <div style="font-size: 2rem; color: var(--accent-secondary); font-weight: bold;">${stats.uniqueIPs}</div>
+                            <div>Unique Visitors</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                            <div style="font-size: 1.5rem; color: var(--accent-tertiary); font-weight: bold;">${Object.keys(stats.countries).length}</div>
+                            <div>Countries</div>
+                        </div>
+                    `;
+                    
+                    // Display visitor table
+                    const tableDiv = document.getElementById('visitor-table');
+                    let tableHTML = `
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                            <thead>
+                                <tr style="background: rgba(255,255,255,0.2);">
+                                    <th style="padding: 10px; text-align: left; border-bottom: 2px solid var(--accent-color);">Date/Time</th>
+                                    <th style="padding: 10px; text-align: left; border-bottom: 2px solid var(--accent-color);">IP Address</th>
+                                    <th style="padding: 10px; text-align: left; border-bottom: 2px solid var(--accent-color);">Location</th>
+                                    <th style="padding: 10px; text-align: left; border-bottom: 2px solid var(--accent-color);">Browser</th>
+                                    <th style="padding: 10px; text-align: left; border-bottom: 2px solid var(--accent-color);">Device</th>
+                                    <th style="padding: 10px; text-align: left; border-bottom: 2px solid var(--accent-color);">Referrer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    `;
+                    
+                    // Show last 50 visitors
+                    visitors.slice(-50).reverse().forEach(visitor => {
+                        const date = new Date(visitor.timestamp).toLocaleString();
+                        tableHTML += `
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 8px;">${date}</td>
+                                <td style="padding: 8px;">${visitor.ip || 'N/A'}</td>
+                                <td style="padding: 8px;">${visitor.city || 'N/A'}, ${visitor.country || 'N/A'}</td>
+                                <td style="padding: 8px;">${visitor.browser || 'Unknown'}</td>
+                                <td style="padding: 8px;">${visitor.isMobile ? 'Mobile' : visitor.isTablet ? 'Tablet' : 'Desktop'}</td>
+                                <td style="padding: 8px;">${visitor.referrer === 'Direct' ? 'Direct' : new URL(visitor.referrer).hostname}</td>
+                            </tr>
+                        `;
+                    });
+                    
+                    tableHTML += '</tbody></table>';
+                    tableDiv.innerHTML = tableHTML;
+                } catch (e) {
+                    console.error('Error loading admin data:', e);
+                }
+            }
+            
+            // Export to CSV
+            function exportToCSV() {
+                try {
+                    const visitors = JSON.parse(localStorage.getItem(TRACKING_CONFIG.storageKey) || '[]');
+                    const headers = ['Timestamp', 'IP', 'City', 'Country', 'Browser', 'OS', 'Device', 'Referrer', 'Screen Size', 'Language'];
+                    const rows = visitors.map(v => [
+                        v.timestamp,
+                        v.ip || 'N/A',
+                        v.city || 'N/A',
+                        v.country || 'N/A',
+                        v.browser || 'N/A',
+                        v.os || 'N/A',
+                        v.isMobile ? 'Mobile' : v.isTablet ? 'Tablet' : 'Desktop',
+                        v.referrer || 'Direct',
+                        `${v.screenWidth}x${v.screenHeight}`,
+                        v.language || 'N/A'
+                    ]);
+                    
+                    const csv = [headers, ...rows].map(row => row.join(',')).join('\n');
+                    const blob = new Blob([csv], { type: 'text/csv' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `portfolio-visitors-${Date.now()}.csv`;
+                    a.click();
+                } catch (e) {
+                    alert('Error exporting CSV: ' + e.message);
+                }
+            }
+            
+            // Export to JSON
+            function exportToJSON() {
+                try {
+                    const visitors = JSON.parse(localStorage.getItem(TRACKING_CONFIG.storageKey) || '[]');
+                    const json = JSON.stringify(visitors, null, 2);
+                    const blob = new Blob([json], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `portfolio-visitors-${Date.now()}.json`;
+                    a.click();
+                } catch (e) {
+                    alert('Error exporting JSON: ' + e.message);
+                }
+            }
+            
+            // Clear all data
+            function clearAllData() {
+                if (confirm('Are you sure you want to delete all visitor data? This cannot be undone!')) {
+                    localStorage.removeItem(TRACKING_CONFIG.storageKey);
+                    alert('All data cleared!');
+                    loadAdminData();
+                }
+            }
+            
+            // Admin access via keyboard shortcut
+            let adminKeySequence = '';
+            document.addEventListener('keydown', (e) => {
+                adminKeySequence += e.key;
+                if (adminKeySequence.length > 20) {
+                    adminKeySequence = adminKeySequence.slice(-20);
+                }
+                if (adminKeySequence.includes(TRACKING_CONFIG.adminKey)) {
+                    showAdminPanel();
+                    adminKeySequence = '';
+                }
+            });
+            
+            // Initialize tracking
+            async function initTracking() {
+                const visitorData = collectVisitorData();
+                
+                // Get IP and location
+                if (TRACKING_CONFIG.enableIPLookup) {
+                    const ipData = await getIPAndLocation();
+                    Object.assign(visitorData, ipData);
+                }
+                
+                // Store data
+                storeVisitorData(visitorData);
+                
+                // Add view count to footer
+                addViewCountToFooter();
+                
+                // Create admin panel
+                createAdminPanel();
+            }
+            
+            // Start tracking when page loads
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initTracking);
+            } else {
+                initTracking();
+            }
+        })();
+    </script>
+    
+    <style>
+        /* Chatbot Styles - Theme Adaptive */
+        .chat-icon {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 0 20px rgba(var(--accent-color-rgb), 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .chat-icon i {
+            color: white;
+            font-size: 24px;
+        }
+        
+        .chat-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 25px rgba(var(--accent-color-rgb), 0.5);
+        }
+        
+        .chat-icon.active {
+            transform: scale(0.9);
+        }
+        
+        .chat-window {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            height: 450px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px) scale(0.9);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid var(--border-color);
+        }
+        
+        .chat-window.active {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateY(0) scale(1);
+        }
+        
+        .chat-header {
+            padding: 15px 20px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-header h3 {
+            margin: 0;
+            font-size: 1rem;
+        }
+        
+        .chat-close {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .chat-close:hover {
+            transform: scale(1.2);
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .chat-message {
+            max-width: 80%;
+            padding: 12px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .bot-message {
+            background: rgba(var(--accent-color-rgb), 0.1);
+            border: 1px solid rgba(var(--accent-color-rgb), 0.2);
+            border-top-left-radius: 5px;
+            align-self: flex-start;
+        }
+        
+        .user-message {
+            background: rgba(var(--accent-secondary-rgb), 0.1);
+            border: 1px solid rgba(var(--accent-secondary-rgb), 0.2);
+            border-top-right-radius: 5px;
+            align-self: flex-end;
+            color: var(--text-color);
+        }
+        
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 12px 15px;
+            min-height: 24px;
+            min-width: 50px;
+        }
+        
+        .typing-indicator span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: rgba(var(--accent-color-rgb), 0.6);
+            border-radius: 50%;
+            animation: typingBounce 1.4s infinite ease-in-out;
+        }
+        
+        .typing-indicator span:nth-child(1) {
+            animation-delay: 0s;
+        }
+        
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes typingBounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-6px); }
+        }
+        
+        .chat-input-container {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid var(--border-color);
+            background: rgba(10, 10, 15, 0.3);
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            background: rgba(10, 10, 15, 0.6);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(var(--accent-color-rgb), 0.3);
+        }
+        
+        .chat-send {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 10px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.5);
+        }
+        
+        .chat-send:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(var(--accent-color-rgb), 0.7);
+        }
+        
+        @media (max-width: 768px) {
+            .chat-window {
+                width: calc(100% - 40px);
+                height: 400px;
+                bottom: 80px;
+                right: 20px;
+                left: 20px;
+            }
+            
+            .chat-icon {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        
+        /* 3D Container Styles */
+        .hero-3d-container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-3d-container {
+                width: 100%;
+                height: 50%;
+                opacity: 0.4;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+    
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- 3D Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Three.js scene
+            const container = document.getElementById('hero3DContainer');
+            
+            // Create scene, camera, and renderer
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+            
+            // Create a geometric shape (cube with rounded edges)
+            const geometry = new THREE.BoxGeometry(1, 1, 1, 2, 2, 2);
+            
+            // Create materials with colors matching the theme
+            const materials = [
+                new THREE.MeshPhongMaterial({ color: 0x00d4ff, flatShading: true }), // Cyan
+                new THREE.MeshPhongMaterial({ color: 0xff00ff, flatShading: true }), // Magenta
+                new THREE.MeshPhongMaterial({ color: 0x7928ca, flatShading: true }), // Purple
+                new THREE.MeshPhongMaterial({ color: 0x00ffff, flatShading: true }), // Cyan
+                new THREE.MeshPhongMaterial({ color: 0xff00ff, flatShading: true }), // Magenta
+                new THREE.MeshPhongMaterial({ color: 0x7928ca, flatShading: true })  // Purple
+            ];
+            
+            // Create mesh with geometry and material
+            const cube = new THREE.Mesh(geometry, materials);
+            scene.add(cube);
+            
+            // Add ambient light
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+            
+            // Add directional light
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(1, 1, 1);
+            scene.add(directionalLight);
+            
+            // Position camera
+            camera.position.z = 3;
+            
+            // Animation function
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                // Rotate the cube
+                cube.rotation.x += 0.01;
+                cube.rotation.y += 0.01;
+                
+                renderer.render(scene, camera);
+            }
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+            
+            // Start animation
+            animate();
+            
+            // Add mouse interaction
+            document.addEventListener('mousemove', function(event) {
+                const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+                const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+                
+                // Subtle movement based on mouse position
+                cube.rotation.x = mouseY * 0.3;
+                cube.rotation.y = mouseX * 0.3;
+            });
+        });
+    </script>
+</body>
+</html>
